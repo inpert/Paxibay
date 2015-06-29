@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); 
 
 // configuration ==========================================
-app.use(express.static(__dirname + '/www'));                
+app.use(express.static(__dirname + '/www/public'));                
 app.use(morgan('dev'));                                  
 app.use(bodyParser.urlencoded({ 'extended': 'true' }));          
 app.use(bodyParser.json());                                  
