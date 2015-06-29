@@ -1,6 +1,8 @@
 .DS_Store
 node_modules/
-www/lib/
+www/node_modules/
+www/public/lib/
+www/public/compiled/
 
 # Shortcut links
 /js

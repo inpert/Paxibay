@@ -1,2 +1,2 @@
 app: node boot.js
-//assets: grunt default
+//assets: (cd www && gulp dev)
