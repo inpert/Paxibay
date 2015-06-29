@@ -14,5 +14,5 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 // listen (start app with node server.js) =================
-app.listen(1337);
-console.log('App listening on port 1337');
+app.listen(5660);
+console.log('App listening on port 5660');

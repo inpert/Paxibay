@@ -1,2 +1,2 @@
 var open = require('open');
-open("http://localhost:1337", '');
+open("http://localhost:5660", '');
