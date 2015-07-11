@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿<script src="../modules/weather/aapp.js"></script>
+<script>
+    angular.bootstrap(document.getElementById("customer"), ['customer']);
+</script>
 
-</body>
-</html>
+<div ng-app="customer" id="customer" ng-controller="rootViewModel">
+
+    <div>{{tax}}</div>
+</div>
