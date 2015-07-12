@@ -1,11 +1,12 @@
 ﻿var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     notify = require('gulp-notify'),
-    bower = require('gulp-bower');
+    bower = require('gulp-bower'),
+    sourcemaps = require('gulp-sourcemaps');
 
 
 var config = {
-    sassPath: './resources/sass',
+    sassPath: './public/content/sass',
     bowerDir: './public/_lib'
 };
 
@@ -16,13 +17,14 @@ gulp.task('bower', function () {
 
 gulp.task('icons', function () {
     gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
-        .pipe(gulp.dest('./public/fonts'))
+        .pipe(gulp.dest('./public/content/fonts'))
 });
 
 gulp.task('css', function () {
     sass(config.sassPath + './style.scss',
         {
             style: 'nested',
+            sourcemap: true,
             loadPath: [
                 config.sassPath,
                 config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
@@ -32,7 +34,8 @@ gulp.task('css', function () {
         .on("error", notify.onError(function (error) {
             return "Error: " + error.message;
         }))
-        .pipe(gulp.dest('./public/css'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./public/content/css'))
 });
 
 // Rerun the task when a file changes
@@ -43,7 +46,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['bower', 'icons', 'css', 'watch']);
 
 //// include gulp
-//var gulp = require('gulp');
+//var gulp = require('gulp'); { sourcemap: true }
 
 //// include plug-ins
 //var jshint = require('gulp-jshint');
