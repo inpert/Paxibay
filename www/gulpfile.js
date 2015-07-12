@@ -1,19 +1,30 @@
-﻿var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    notify = require('gulp-notify'),
-    bower = require('gulp-bower'),
-    sourcemaps = require('gulp-sourcemaps');
-
+﻿// include plug-ins
+var gulp        = require('gulp'),
+    sass        = require('gulp-ruby-sass'),
+    notify      = require('gulp-notify'),
+    bower       = require('gulp-bower'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    concat      = require('gulp-concat'),
+    stripDebug  = require('gulp-strip-debug'),
+    uglify      = require('gulp-uglify'),
+    changed     = require('gulp-changed'),
+    imagemin    = require('gulp-imagemin'),
+    minifyHTML  = require('gulp-minify-html'),
+    autoprefix  = require('gulp-autoprefixer'),
+    minifyCSS   = require('gulp-minify-css'),
+    jshint      = require('gulp-jshint');
 
 var config = {
+    contentPath: './public/content',
     sassPath: './public/content/sass',
-    bowerDir: './public/_lib'
+    cssPath     : './public/content/css',
+    bowerDir    : './public/_lib',
+    angularPath : './public/modules'
 };
 
 gulp.task('bower', function () {
     bower().pipe(gulp.dest(config.bowerDir))
 });
-
 
 gulp.task('icons', function () {
     gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
@@ -35,37 +46,47 @@ gulp.task('css', function () {
             return "Error: " + error.message;
         }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./public/content/css'))
+        .pipe(gulp.dest(config.cssPath))
 });
 
-// Rerun the task when a file changes
-gulp.task('watch', function () {
-    gulp.watch(config.sassPath + '/**/*.scss', ['css']);
+// JS hint task
+gulp.task('jshint', function () {
+    gulp.src(config.angularPath + '/**/*.js')
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'));
 });
 
-gulp.task('default', ['bower', 'icons', 'css', 'watch']);
+// default gulp task
+gulp.task('default', ['bower', 'icons', 'css', 'jshint'], function () {
+    // watch for scss changes
+    gulp.watch(config.sassPath + '/**/*.scss', function () {
+        gulp.run('css');
+    });
 
-//// include gulp
-//var gulp = require('gulp'); { sourcemap: true }
+    // watch for JS changes
+    gulp.watch(config.angularPath + '/**/*.js', function () {
+        gulp.run('jshint');
+    });
 
-//// include plug-ins
-//var jshint = require('gulp-jshint');
-//var concat = require('gulp-concat');
-//var stripDebug = require('gulp-strip-debug');
-//var uglify = require('gulp-uglify');
-//var changed = require('gulp-changed');
-//var imagemin = require('gulp-imagemin');
-//var minifyHTML = require('gulp-minify-html');
-//var autoprefix = require('gulp-autoprefixer');
-//var minifyCSS = require('gulp-minify-css');
+    //// watch for HTML changes
+    //gulp.watch('./src/*.html', function () {
+    //    gulp.run('htmlpage');
+    //});
 
-//// JS hint task
-//gulp.task('jshint', function () {
-//    gulp.src('./src/scripts/*.js')
-//      .pipe(jshint())
-//      .pipe(jshint.reporter('default'));
-//});
- 
+    //// watch for JS changes
+    //gulp.watch('./src/scripts/*.js', function () {
+    //    gulp.run('jshint', 'scripts');
+    //});
+
+    //// watch for CSS changes
+    //gulp.watch('./src/styles/*.css', function () {
+    //    gulp.run('styles');
+    //});
+
+});
+
+
+//==================================
 //// minify new images
 //gulp.task('imagemin', function () {
 //    var imgSrc = './src/images/**/*',
@@ -104,26 +125,4 @@ gulp.task('default', ['bower', 'icons', 'css', 'watch']);
 //      .pipe(autoprefix('last 2 versions'))
 //      .pipe(minifyCSS())
 //      .pipe(gulp.dest('./build/styles/'));
-//});
-
-//// default gulp task
-//// gulp.task('default', ['imagemin', 'htmlpage', 'scripts', 'styles'], function() {
-//// });
-
-//// default gulp task
-//gulp.task('default', ['imagemin', 'htmlpage', 'scripts', 'styles'], function () {
-//    // watch for HTML changes
-//    gulp.watch('./src/*.html', function () {
-//        gulp.run('htmlpage');
-//    });
-
-//    // watch for JS changes
-//    gulp.watch('./src/scripts/*.js', function () {
-//        gulp.run('jshint', 'scripts');
-//    });
-
-//    // watch for CSS changes
-//    gulp.watch('./src/styles/*.css', function () {
-//        gulp.run('styles');
-//    });
 //});
