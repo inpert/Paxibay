@@ -46,7 +46,6 @@
     //Load controller
     .controller('MainController', ['$scope', mainCtrl]);
 
-    var str = '';
 }());
 
 
