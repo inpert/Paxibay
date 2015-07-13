@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Paxibay</title>
+    <link href="content/css/style.css" rel="stylesheet" />
+    <script src="content/scripts/script.js"></script>
+    <!--<script src="_lib/angular/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="modules/weather/aapp.js"></script>-->
+
+</head>
+<body ng-controller="mainCtrl">
+    <div class="wrapper">
+        <div id="sidebar-wrapper">
+            <ng-include src="'views/sideMenu.html'"></ng-include>
+        </div>
+        <div id="page-content-wrapper">
+            <div ng-include="'views/weather.html'"></div>
+        </div>
+    </div>
+
+</body>
+</html>
