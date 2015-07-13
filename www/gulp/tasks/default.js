@@ -14,7 +14,7 @@ gulp.task('defaultaa',
 );
 
 // default gulp task
-gulp.task('default', ['jshint', 'browserify'], function () {
+gulp.task('default', ['jshint', 'css', 'browserify'], function () {
 
     // watch for JS changes
     gulp.watch('public/main.js', function () {

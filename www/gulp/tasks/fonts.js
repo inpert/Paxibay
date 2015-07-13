@@ -1,6 +1,6 @@
 ﻿//'use strict';
 
-var config = require('../config');
+//var config = require('../config');
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var bower = require('gulp-bower');
