@@ -7,22 +7,23 @@ var concat = require('gulp-concat');
 //var debug = require('gulp-debug');
 
 gulp.task('browserify', function () {
+    //gulp.src(['public/main.js', 'public/js/main.js'])
     gulp.src(['public/main.js'])
         .pipe(browserify({
             insertGlobals: true,
             debug: true
         }))
-        .pipe(concat('bundled.js'))
-        .pipe(gulp.dest('./public/content/js'));
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('./public/build'));
 });
 
 
 gulp.task('browserifyDist', function () {
-    gulp.src(['app/js/main.js'])
+    gulp.src(['public/main.js'])
         .pipe(browserify({
             insertGlobals: true,
             debug: true
         }))
-        .pipe(concat('bundled.js'))
+        .pipe(concat('main.js'))
         .pipe(gulp.dest('./dist/js'));
 });

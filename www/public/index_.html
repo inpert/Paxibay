@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html>
+<body>
+    <div ng-controller="WelcomeController">
+        {{greeting}}
+    </div>
+
+    <script src="http://code.angularjs.org/1.1.4/angular.js"></script>
+    <script>
+
+        //angular.element(document).ready(function () {
+
+        //    var app = angular.module('demo', [])
+        //      .controller('WelcomeController', function ($scope) {
+        //          $scope.greeting = 'Welcome!';
+        //      });
+
+        //    angular.bootstrap(document, ['demo']);
+        //});
+
+        //var app = angular.module('demo', [])
+        //      .controller('WelcomeController', function ($scope) {
+        //          $scope.greeting = 'Welcome!';
+        //      });
+
+        //angular.bootstrap(document, ['demo']);
+      
+    </script>
+    <script src="main1.js"></script>
+</body>
+</html>
+
+<!--<!doctype html>
+<html>
+<head>
+    <script src="http://code.angularjs.org/1.1.4/angular.js"></script>
+</head>
+<body>
+    <div id="myApp">Initializing...</div>
+    <script type="text/template" id="myTemplate">
+        <div ng-controller="myController">
+            <input type="text" ng-model="model" />
+            {{model}}
+            <button ng-click="reset()">Reset</button>
+        </div>
+    </script>
+   
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", function ($scope) {
+            $scope.model = '';
+            $scope.reset = function () {
+                $scope.model = '';
+            };
+        });
+        angular.element(document).ready(function () {
+            var template = document.getElementById("myTemplate");
+            var appDiv = document.getElementById("myApp");
+            setTimeout(function () {
+                appDiv.innerHTML = template.innerHTML;
+                angular.bootstrap(angular.element(appDiv), ['myApp']);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>-->

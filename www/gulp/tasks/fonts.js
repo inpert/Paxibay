@@ -10,9 +10,9 @@ var sass = require('gulp-ruby-sass');
 
 var config = {
     contentPath: './public/content',
-    sassPath: './public/content/sass',
-    cssPath: './public/content/css',
-    bowerDir: './public/_lib',
+    sassPath: './public/styles',
+    cssPath: './public/build',
+    bowerDir: './public/bower_lib',
     angularPath: './public/modules'
 };
 
@@ -22,11 +22,11 @@ gulp.task('bower', function () {
 
 gulp.task('icons', function () {
     gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
-        .pipe(gulp.dest('./public/content/fonts'));
+        .pipe(gulp.dest('./public/fonts'));
 });
 
 gulp.task('css', function () {
-    sass(config.sassPath + './style.scss',
+    sass(config.sassPath + './main.scss',
         {
             style: 'nested',
             sourcemap: true,

@@ -7,6 +7,6 @@ var clean = require('gulp-clean');
 gulp.task('clean', function () {
     gulp.src('./dist/*')
       .pipe(clean({ force: true }));
-    gulp.src('./public/content/js/bundled.js')
+    gulp.src('./public/build/main.js')
       .pipe(clean({ force: true }));
 });

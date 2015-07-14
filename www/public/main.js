@@ -1,14 +1,13 @@
 ﻿(function () {
 
-    'use strict';
+    //'use strict';
 
     require('angular');
     require('angular-route');
     require('angular-animate');
 
     var mainCtrl = require('./modules/weather/mainctrl');
-    //var view1 = require('./view1/view1');
-    //var view2 = require('./view2/view2');
+    //require('./modules/weather/_index'); // 'app.controllers', 
 
     angular.module('SampleApp', ['ngRoute', 'ngAnimate', 'SampleApp.view1', 'SampleApp.view2'])
 
@@ -55,3 +54,4 @@
 //config(['$routeProvider', function ($routeProvider) {
 //    $routeProvider.otherwise({ redirectTo: '/view1' });
 //}]);
+

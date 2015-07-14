@@ -16,11 +16,7 @@ gulp.task('dev', ['jshint', 'css', 'browserify'], function () {
         runSequence('clean', 'browserify', browsersync.reload);
     });
 
-    gulp.watch('public/modules/weather/*.js', function () {
-        runSequence('clean', 'browserify', browsersync.reload);
-    });
-
-    gulp.watch('public/view2/*.js', function () {
+    gulp.watch('public/modules/**/*.js', function () {
         runSequence('clean', 'browserify', browsersync.reload);
     });
 

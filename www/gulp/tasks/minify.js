@@ -32,11 +32,11 @@ gulp.task('minify-js', function () {
 
 // JS concat, strip debugging and minify
 gulp.task('scripts', function () {
-    gulp.src(['./public/_lib/angular/angular.js', './public/app.js', './public/modules/**/*.js'])
+    gulp.src(['./public/bower_lib/angular/angular.js', './public/app.js', './public/modules/**/*.js'])
       .pipe(concat('script.js'))
       .pipe(stripDebug())
       .pipe(uglify())
-      .pipe(gulp.dest('./public/content/scripts'));
+      .pipe(gulp.dest('./public/build/scripts'));
 });
 
 //// CSS concat, auto-prefix and minify
