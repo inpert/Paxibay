@@ -8,16 +8,19 @@ var minifyCSS = require('gulp-minify-css');
 var runSequence = require('run-sequence');
 var browsersync = require('browser-sync');
 
-// default task
-gulp.task('defaultaa',
-  ['jshint', 'browserify']
-);
-
 // default gulp task
-gulp.task('default', ['jshint', 'css', 'browserify'], function () {
+gulp.task('dev', ['jshint', 'css', 'browserify'], function () {
 
     // watch for JS changes
     gulp.watch('public/main.js', function () {
+        runSequence('clean', 'browserify', browsersync.reload);
+    });
+
+    gulp.watch('public/modules/weather/*.js', function () {
+        runSequence('clean', 'browserify', browsersync.reload);
+    });
+
+    gulp.watch('public/view2/*.js', function () {
         runSequence('clean', 'browserify', browsersync.reload);
     });
 

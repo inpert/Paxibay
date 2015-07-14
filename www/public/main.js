@@ -1,14 +1,4 @@
-﻿
-//var app = angular.module('mainApp', ['customer']);
-
-
-//app.controller('mainCtrl', function () {
-
-//});
-
-
-
-(function () {
+﻿(function () {
 
     'use strict';
 
@@ -46,6 +36,9 @@
     //Load controller
     .controller('MainController', ['$scope', mainCtrl]);
 
+    //var aa = 'this is testing';
+
+    
 }());
 
 

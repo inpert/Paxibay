@@ -9,7 +9,7 @@ angular.module('SampleApp.view2', ['ngRoute'])
 }])
 
 .controller('View2Ctrl', ['$scope', function ($scope) {
-    $scope.test = "View2Ctrl Testing...dddd";
+    $scope.test = "View2Ctrl Testing...dddd this tesing";
     console.log("required!");
 
 

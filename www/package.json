@@ -2,7 +2,6 @@
   "title": "node-paxibay",
   "version": "0.0.1",
   "devDependencies": {
-    "gulp-jshint": "^1.11.2",
     "jasmine-core": "^2.1.3",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.2"
