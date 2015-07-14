@@ -7,7 +7,10 @@
     require('angular-animate');
 
     var mainCtrl = require('./modules/weather/mainctrl');
+    require('./view1/view1');   //'SampleApp.view1', 'SampleApp.view2'
+    require('./view2/view2');   //
     //require('./modules/weather/_index'); // 'app.controllers', 
+
 
     angular.module('SampleApp', ['ngRoute', 'ngAnimate', 'SampleApp.view1', 'SampleApp.view2'])
 
