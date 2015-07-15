@@ -1,0 +1,226 @@
+<div class="navlist depth-1">
+    <div class="navlist-menu" ng-if="!coreVm.inCall">
+        <!-- <ul class="navlist-items">
+            <li>
+                <a href="" class="navlist-head" data-ng-click="coreVm.isOpenMainMenu = !coreVm.isOpenMainMenu" ng-show="coreVm.inCall">
+                    <span class="pull-right">
+                        <i class="icon navlist-icon-br-expand" ng-class="{'icon-br-arrow-circle-23': coreVm.isOpenMainMenu, 'icon-br-arrow-circle-26': !coreVm.isOpenMainMenu}"></i>
+                    </span>
+                    <i class="icon icon-br-list-1 navlist-icon"></i> <span class="navlist-title navlist-label">Navigation</span>
+                </a>
+            </li>
+        </ul> -->
+        <ul class="navlist-items" xg-if="coreVm.isOpenMainMenu">
+            <li>
+                <a class="navlist-link clickable" title="Toogle menu" ng-click="coreVm.isOpenMainMenu = !coreVm.isOpenMainMenu" style="line-height:3em">
+                    &nbsp;
+                    <i class="icon icon-br-menu navlist-icon" style="right: 18px; position: absolute;"></i> <span class="navlist-label"></span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('welcome')>0)}">
+                <a class="navlist-link" title="Dashboard" href="#/welcome">
+                    <i class="icon icon-br-dashboard navlist-icon"></i> <span class="navlist-label">Dashboard</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('welcome')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('comission')>0)}">
+                <a class="navlist-link" title="Comissions" href="#/capital">
+                    <i class="icon icon-br-graph navlist-icon"></i> <span class="navlist-label">My Comissions</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('comission')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('policy')>0)}">
+                <a class="navlist-link" title="My Policy List" href="#/policy">
+                    <i class="icon icon-br-table navlist-icon"></i> <span class="navlist-label">My Policy List</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('policy')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('notification')>0)}">
+                <a class="navlist-link" title="Notification" href="#/notification">
+                    <i class="icon icon-br-bell navlist-icon"></i> <span class="navlist-label">Notification</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('notification')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('messages')>0)}">
+                <a class="navlist-link" title="My secure messages" href="#/messages">
+                    <i class="icon icon-br-envelop navlist-icon"></i> <span class="navlist-label">My secure messages</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('messages')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('settings')>0)}">
+                <a class="navlist-link" title="Broker Settings" href="#/settings">
+                    <i class="icon icon-br-cog navlist-icon"></i> <span class="navlist-label">Broker Settings</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('settings')>0"></li>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('help')>0)}">
+                <a class="navlist-link" title="Broker help" href="#/help">
+                    <i class="icon icon-question-mark navlist-icon"></i> <span class="navlist-label">Help</span>
+                </a>
+            <li class="icon-br-play active-arrow" ng-if="coreVm.location.path().indexOf('help')>0"></li>
+            </li>
+
+            <!-- <li ng-if="!coreVm.inCall && !coreVm.isAuthenticated" data-ng-class="{ 'active' : (coreVm.location.path() == '/search') || (coreVm.location.path().indexOf('member/authentication')>0) || (coreVm.location.path().indexOf('member/election/123123')>0)}">
+                <a class="navlist-link" href="#/search">
+                    <i class="icon icon-br-dashboard navlist-icon"></i> <span class="navlist-label">Dashboard</span>
+                </a>
+            </li> -->
+            <!--   <li ng-if="!coreVm.inCall && !coreVm.isAuthenticated" data-ng-class="{ 'active' : coreVm.location.path() == '/member/lead/create', 'last-menu' : !coreVm.inCall}">
+                  <a class="navlist-link" href="#/member/lead/create">
+                      <i class="icon icon-br-user-add-2 navlist-icon"></i> <span class="navlist-label">Create Lead</span>
+                  </a>
+              </li> -->
+        </ul>
+    </div>
+
+
+
+    <div class="navlist-menu navlist-menu-incall" ng-if="coreVm.inCall && coreVm.isAuthenticated">
+        <!-- <ul class="navlist-items">
+            <li>
+                <a href="" class="navlist-head" data-ng-click="coreVm.isOpenSecondMenu = !coreVm.isOpenSecondMenu" ng-show="coreVm.inCall">
+                    <span class="pull-right">
+                        <i class="icon navlist-icon-br-expand" ng-class="{'icon-br-arrow-circle-23': coreVm.isOpenSecondMenu, 'icon-br-arrow-circle-26': !coreVm.isOpenSecondMenu}"></i>
+                    </span>
+                    <i class="icon icon-br-user-2 navlist-icon"></i> <span class="navlist-title navlist-label">{{coreVm.currentUserDisplay()}}</span>
+                </a>
+            </li>
+        </ul> -->
+        <ul class="navlist-items" xg-show="coreVm.isOpenSecondMenu">
+            <li ng-if="coreVm.currentCase == undefined && !coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/create')>0)}">
+                <a class="navlist-link" href="" ng-click="coreVm.createCase('/case/create/member')">
+                    <i class="icon icon-br-file-add navlist-icon"></i> <span class="navlist-label">Create Case</span>
+                </a>
+            </li>
+            <li ng-if="coreVm.currentCase == undefined  && coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/create/' + coreVm.planAdmin.MemberNumber)>0)}">
+                <a class="navlist-link" href="" ng-click="coreVm.createCase('/case/create/'+ coreVm.planAdmin.MemberNumber)">
+                    <i class="icon icon-br-file-add navlist-icon"></i> <span class="navlist-label">Create Case</span>
+                </a>
+            </li>
+
+            <li ng-if="coreVm.currentCase && !coreVm.planAdmin" data-ng-class="{ 'active' : (
+            ((coreVm.location.path().indexOf('case/create')>0) && coreVm.inCall) ||
+            ((coreVm.location.path().indexOf('case/edit')>0) && coreVm.inCall)
+            )}">
+                <div class="menu-right-arrow" ng-show="(
+            ((coreVm.location.path().indexOf('case/create')>0) && coreVm.inCall) ||
+            ((coreVm.location.path().indexOf('case/edit')>0) && coreVm.inCall)
+            )"></div>
+                <a ng-if="coreVm.getCurrentCaseId()==0" class="navlist-link" href="#/case/create/member">
+                    <i class="icon icon-br-file-edit navlist-icon"></i> <span class="navlist-label">Current Case</span>
+                </a>
+                <a ng-if="coreVm.getCurrentCaseId()!=0" class="navlist-link" href="#/case/edit/{{coreVm.currentUserDisplay()}}/{{coreVm.getCurrentCaseId()}}">
+                    <i class="icon icon-br-file-edit navlist-icon"></i> <span class="navlist-label">Current Case</span>
+                </a>
+            </li>
+
+
+            <li ng-if="coreVm.currentCase && coreVm.getCurrentCaseId()==0 && coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/create/')>0)}">
+                <a class="navlist-link" href="#/case/create/member">
+                    <i class="icon icon-br-file-edit navlist-icon"></i> <span class="navlist-label">Current Case</span>
+                </a>
+            </li>
+
+            <li ng-if="coreVm.currentCase && coreVm.getCurrentCaseId()!=0 && coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/edit/')>0)}">
+                <a class="navlist-link" href="#/case/edit/{{coreVm.currentUserDisplay()}}/{{coreVm.getCurrentCaseId()}}">
+                    >
+                    <i class="icon icon-br-file-edit navlist-icon"></i> <span class="navlist-label">Current Case</span>
+                </a>
+            </li>
+
+
+            <li ng-if="coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/search/' + coreVm.planAdmin.GroupId)>0)}">
+                <a class="navlist-link" href="#/member/search/{{coreVm.planAdmin.GroupId}}">
+                    <i class="icon icon-br-user-search-2 navlist-icon"></i> <span class="navlist-label">Search</span>
+                </a>
+            </li>
+
+            <!--  Billing History for group-->
+            <li ng-if="!coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('billing/history')>0)}">
+                <a class="navlist-link" href="#/billing/history">
+                    <i class="icon icon-br-dollar-currency-3 navlist-icon"></i> <span class="navlist-label">Billing History</span>
+                </a>
+            </li>
+
+            <!--  Billing History for member-->
+            <li ng-if="coreVm.planAdmin" data-ng-class="{ 'active' : (coreVm.location.path().indexOf('billing/history')>0)}">
+                <a class="navlist-link" href="#/billing/history/{{coreVm.planAdmin.GroupId}}">
+                    <i class="icon icon-br-dollar-currency-3 navlist-icon"></i> <span class="navlist-label">Billing History</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/history')>0) && (coreVm.location.path().indexOf('case/history/')<0) && coreVm.inCall}">
+                <a class="navlist-link" href="#/case/history">
+                    <i class="icon icon-br-folder-1 navlist-icon"></i> <span class="navlist-label">Case History</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/profile')>0)}" ng-if="!coreVm.planAdmin">
+                <a class="navlist-link" href="#/member/profile">
+                    <i class="icon icon-br-profile-3 navlist-icon"></i> <span class="navlist-label">Profile</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('group/profile')>0)}" ng-if="coreVm.planAdmin">
+                <a class="navlist-link" href="#/group/profile">
+                    <i class="icon icon-br-profile-3 navlist-icon"></i> <span class="navlist-label">Profile</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/election')>0)}" ng-if="!coreVm.planAdmin">
+                <a class="navlist-link" href="#/member/election">
+                    <i class="icon icon-br-business-chart-1 navlist-icon"></i> <span class="navlist-label">Election</span>
+                </a>
+            </li>
+
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/communication')>0)}" ng-if="!coreVm.planAdmin">
+                <a class="navlist-link" href="#/member/communication">
+                    <i class="icon icon-br-bubble-conversation-2 navlist-icon"></i> <span class="navlist-label">Communication</span>
+                </a>
+            </li>
+            <li ng-if="!coreVm.planAdmin">
+                <a class="navlist-link" target="_blank" href="/Tools/AccessTool/LFAdminWidget/OnetimeEntryAch?personId={{coreVm.currentMemberNumber()}}">
+                    <i class="icon icon-br-money navlist-icon"></i> <span class="navlist-label">ACH</span>
+                </a>
+            </li>
+
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/lead/update')>0)}" ng-show="coreVm.isLead">
+                <a href="" class="navlist-link" ng-click="coreVm.editLead()">
+                    <i class="icon icon-br-file-edit navlist-icon"></i> <span class="navlist-label">Update Lead</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="navlist-menu navlist-menu-submember" ng-if="coreVm.inCall && coreVm.planAdmin && coreVm.subMembers && coreVm.subMembers.length > 0" ng-repeat="subMember in coreVm.subMembers">
+        <ul class="navlist-items">
+            <li>
+                <a href="" class="navlist-head">
+                    <span class="pull-right">
+                        <i class="icon icon-br-delete-3 navlist-icon-br-expand" data-ng-click="coreVm.resetSubMembers()"></i>
+                    </span>
+                    <i class="icon icon-br-contacts-2 navlist-icon"></i> <span class="navlist-title navlist-label">{{coreVm.reduceName(subMember.FullName)}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navlist-items" ng-show="coreVm.isOpenSubMembers">
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('case/history/contacts/' + subMember.Id)>0) && coreVm.inCall}">
+                <a ng-disabled="subMember.groupType !== 'Contacts'" class="navlist-link" href="#/case/history/contacts/{{subMember.Id}}">
+                    <i class="icon icon-br-folder-1 navlist-icon"></i> <span class="navlist-label">Case History</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/profile/' + subMember.MemberNumber)>0)}">
+                <a ng-disabled="!subMember.MemberNumber" class="navlist-link" href="#/member/profile/{{subMember.MemberNumber}}">
+                    <i class="icon icon-br-profile-3 navlist-icon"></i> <span class="navlist-label">Profile</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/election/' + subMember.MemberNumber)>0)}">
+                <a ng-disabled="!subMember.MemberNumber" class="navlist-link" href="#/member/election/{{subMember.MemberNumber}}">
+                    <i class="icon icon-br-business-chart-1 navlist-icon"></i> <span class="navlist-label">Election History</span>
+                </a>
+            </li>
+            <li data-ng-class="{ 'active' : (coreVm.location.path().indexOf('member/communication/' + subMember.MemberNumber)>0)}">
+                <a ng-disabled="!subMember.MemberNumber" class="navlist-link" href="#/member/communication/{{subMember.MemberNumber}}">
+                    <i class="icon icon-br-bubble-conversation-2 navlist-icon"></i> <span class="navlist-label">Communication</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

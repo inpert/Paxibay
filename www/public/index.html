@@ -22,39 +22,26 @@
     </ul>
 
     <!-- views -->
-    <div ng-view></div>
-
-    <div ng-controller="MainController">
-        {{test}}
-    </div>
-    <div class="page-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. U
-                    </div>
-                    <div class="col-md-4">
-                        {{city.name}}ssss
-                    </div>
-                    <div class="col-md-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor
-                        <div class="row">
-                            <div class="col-md-4">
-                                bbss
-                            </div>
-                            <div class="col-md-4">
-                                bbssss
-                            </div>
-                            <div class="col-md-4">
-                                bbssss
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div>
+        <div ng-include="coreVm.headerUrl"></div>
+        <div class="section-navigation" ng-include="'modules/core/menu.tmpl.html'"></div> 
+        <div class="section-content">
+            <div class="section-session" ng-view></div>
+            <div ng-include="coreVm.footerUrl"></div>
         </div>
     </div>
+
+
+    <!--<div class="wrapper">
+        <div id="sidebar-wrapper">
+            <ng-include src="'views/sideMenu.html'"></ng-include>
+        </div>
+        <div id="page-content-wrapper">
+            <div ng-include="'views/weather.html'"></div>
+        </div>
+        modules/core/menu.tmpl.html
+
+    </div>-->
 
     <!-- scripts -->
     <script src="build/main.js"></script>

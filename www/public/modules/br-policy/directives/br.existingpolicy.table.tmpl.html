@@ -1,0 +1,36 @@
+<div class="panel panel-default policy-table">
+    <div class="panel-heading"><h4>{{title}}</h4></div>
+    <table st-table="displayCollection" st-safe-src="rowCollection" class="table">
+        <thead>
+        <tr>
+            <th st-sort="policyName" class="sort-clickable">Policy Name</th>
+            <th st-sort="policyId" class="sort-clickable hidden-xs">Policy Id #</th>
+            <th class="hidden-xs">Policy Name</th>
+            <th>Process Status</th>
+            <th st-sort="lastUpdated" class="sort-clickable hidden-xs">Last Updt.</th>
+            <!-- <th st-sort="policyName" class="clickable">Policy Name</th>
+            <th st-sort="policyId" class="clickable">Policy Id #</th>
+            <th>Policy Name</th>
+            <th>Process Status</th>
+            <th st-sort="lastUpdated" class="clickable">Last Updt.</th> -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayCollection">
+            <td class="col-md-3">{{row.policyName}}</td>
+            <td class="col-md-2 hidden-xs">{{row.policyId}}</td>
+            <td class="col-md-3 hidden-xs">{{row.policyStatus}}</td>
+            <td class="col-md-2">{{row.processStatus}}</td>
+            <td class="col-md-2 hidden-xs">{{row.lastUpdated}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">
+                <div st-items-by-page="10" st-pagination="" st-template="./modules/br-policy/directives/br.custom.pagination.tmpl.html"></div>
+                <!-- <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="displayedPages"></div> -->
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

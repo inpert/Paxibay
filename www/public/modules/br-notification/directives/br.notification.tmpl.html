@@ -1,0 +1,18 @@
+<div class="side-panel">
+  <div class="side-panel-container">
+    <h3>
+    	Notification
+    	<a class="clickable no-line" ng-click="vmNotifications.isClosed = !vmNotifications.isClosed">
+    		<i class="icon-br-arrow-down-2 pull-right small-icon" ng-if="vmNotifications.isClosed"></i>
+    		<i class="icon-br-arrow-up-2 pull-right small-icon" ng-if="!vmNotifications.isClosed"></i>
+    	</a>
+    </h3>
+    <div class="heightAnimated" ng-class="{'heightOpened': !vmNotifications.isClosed, 'heightClosed': vmNotifications.isClosed}">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <button class="btn btn-info">
+    Action
+  </button>
+  </div>
+  
+</div>

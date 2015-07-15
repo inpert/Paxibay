@@ -1,0 +1,29 @@
+﻿<div class="panel panel-default policy-table">
+    <table st-table="displayCollection" st-safe-src="rowCollection" class="table">
+        <thead>
+            <tr>
+                <th st-sort="policyName" class="clickable">Policy Name</th>
+                <th st-sort="policyId" class="clickable">Policy ID #</th>
+                <th st-sort="type" class="clickable">Type</th>
+                <th st-sort="exch" class="clickable">Exch.</th>
+                <th st-sort="status" class="clickable">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in displayCollection">
+                <td>{{row.policyName}}</td>
+                <td>{{row.policyId}}</td>
+                <td>{{row.policyType}}</td>
+                <td>{{row.policyExch}}</td>
+                <td>{{row.policyStatus}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="displayedPages"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

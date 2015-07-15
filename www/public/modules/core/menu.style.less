@@ -1,0 +1,101 @@
+.navlist-col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navlist {
+    background-color: @menu-bg-color;
+}
+
+.navlist-menu {
+    margin-bottom: 8px;
+}
+
+.navlist-menu-incall,
+.navlist-menu-submember {
+    border-top: 1px solid #E5E5E5;
+}
+
+.navlist-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+        display: block;
+    }
+    > .active {
+        .navlist-link {
+            color: @menu-color-active;
+        }
+    }
+}
+
+.navlist-link,
+.navlist-head {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    .transition(all 0.3s linear 0s);
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    
+}
+
+.navlist-link {
+    color: @menu-color;
+
+    &:hover,
+    &:focus {
+        color: @menu-color-active;
+    }
+}
+
+.navlist-head {
+    color: @brand-info;
+}
+
+.navlist-label,
+.navlist-head span {
+    display: none;
+    font-weight: bold;
+}
+
+.lock-visibility{
+    .navlist-label,
+    .navlist-head span {
+        display: inline !important;
+        font-weight: bold;
+    }
+}
+
+.navlist-icon {
+  margin-right: 4px;
+  font-size: 2em;
+  line-height: 1.6em;
+  vertical-align: -0.26em;
+  width: 1.28571429em;
+  text-align: center;
+}
+
+.navlist-title {
+    font-weight: @font-weight-bold;
+}
+
+.section-navigation {
+    width: @nav-collapse-width;
+    -webkit-transition: width 0.1s ease-in-out ;
+    -moz-transition: width 0.1s ease-in-out ;
+    -o-transition: width 0.1s ease-in-out ;
+    transition: width 0.1s ease-in-out ;
+}
+.active-arrow{
+  color: #00accd;
+  position: absolute;
+  right: -8px;
+  margin-top: -2.9em;
+}

@@ -12,6 +12,9 @@ $font-family-base: 'Raleway', sans-serif;
 @import 'mixins';
 @import 'typography';
 
+@import 'menu.style';
+@import 'broker-portal-icons';
+
 body {
   font-family: Helvetica, sans-serif;
   color: $font-color--dark;

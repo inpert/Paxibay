@@ -42,7 +42,6 @@ h3 {
 }
 
 
-
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -71,3 +70,17 @@ h3 {
   content: "";
   padding: 0;
 }
+
+.section-navigation {
+  float: left;
+  width: 16.66666667%;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.section-content {
+  float: left;
+  width: 83.33333333%;
+  padding: 15px;
+}
+

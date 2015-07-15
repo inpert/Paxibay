@@ -1,0 +1,28 @@
+<div class="panel panel-default policy-table">
+    <div class="panel-heading"><h4>{{title}}</h4></div>
+    <table st-table="displayCollection" st-safe-src="rowCollection" class="table">
+        <thead>
+        <tr>
+            <th st-sort="policyName">Policy Name</th>
+            <th st-sort="policyId">Policy Id #</th>
+            <th>Transaction Status</th>
+            <th>Last Updt.</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayCollection">
+            <td>{{row.policyName}}</td>
+            <td>{{row.policyId}}</td>
+            <td>{{row.transactionStatus}}</td>
+            <td>{{row.lastUpdated | date:dateFormat}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" class="text-center">
+                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="displayedPages"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

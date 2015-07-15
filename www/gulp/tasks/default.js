@@ -20,10 +20,10 @@ gulp.task('dev', ['jshint', 'css', 'browserify'], function () {
         runSequence('clean', 'browserify', browsersync.reload);
     });
 
-    //// watch for scss changes
-    //gulp.watch(config.sassPath + '/**/*.scss', function () {
-    //    gulp.run('css');
-    //});
+    // watch for scss changes
+    gulp.watch('public/styles/*.scss', function () {
+        gulp.run('css');
+    });
 
     //// watch for JS changes
     //gulp.watch(config.angularPath + '/**/*.js', function () {
