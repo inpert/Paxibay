@@ -2,10 +2,12 @@
     <h1>{{vm.title}}</h1>
     <div>
         <div class="col-md-8">
-            dashboard content goes here
+            <pb-dashboard-search></pb-dashboard-search>
+            <!--<pb-dashboard-content></pb-dashboard-content>-->
+            <pb-dashboard-table></pb-dashboard-table>
         </div>
         <div class="col-md-4">
-            dashboard comment goes here
+            <pb-dashboard></pb-dashboard>
         </div>
     </div>
     <div class="clear"></div>
@@ -15,7 +17,7 @@
 
 
 <!--<div>
-    <div class="col-md-8">
+    <div class="col-md-8"> 
         <br-policy-search></br-policy-search>
         <br-my-policies details="vm.myPolicies"></br-my-policies>
     </div>
