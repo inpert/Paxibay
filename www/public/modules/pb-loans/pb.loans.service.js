@@ -1,12 +1,12 @@
-module.exports = ['$q','$http', '$rootScope', 'coreConfig', brPolicyService];
+module.exports = ['$q', '$http', '$rootScope', pbLoansService];
 
-function brPolicyService($q,$http, $rootScope, coreConfig) {
+function pbLoansService($q, $http, $rootScope) {
     return {
-        get: get,
-        set: set,
-        getExistingPolicies: getExistingPolicies,
-        getNewPolicies: getNewPolicies,
-        getMyPolicies: getMyPolicies,
+        //get: get,
+        //set: set,
+        //getExistingPolicies: getExistingPolicies,
+        //getNewPolicies: getNewPolicies,
+        //getMyPolicies: getMyPolicies,
     };
 
   function getMyPolicies(req) {

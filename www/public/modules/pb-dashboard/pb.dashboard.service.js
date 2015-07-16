@@ -1,6 +1,6 @@
-module.exports = ['$q', '$http', '$rootScope',  pbCapitalService];
+module.exports = ['$q', '$http', '$rootScope', pbDashboardService];
 
-function pbCapitalService($q, $http, $rootScope) {
+function pbDashboardService($q, $http, $rootScope) {
     return {
         //get: get,
         //set: set,

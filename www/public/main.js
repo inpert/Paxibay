@@ -2,9 +2,13 @@
 require('angular-route');
 require('angular-animate');
 
-//require('./modules/br-policy/br.policy.app');
+require('./modules/pb-policy/pb.policy.app');
 require('./modules/pb-capital/pb.capital.app.js');
 require('./modules/pb-settings/pb.settings.app.js');
+require('./modules/pb-dashboard/pb.dashboard.app.js');
+require('./modules/pb-cost/pb.cost.app.js');
+require('./modules/pb-loans/pb.loans.app.js');
+
 
 require('./modules/view1/view1');
 require('./modules/view2/view2');
@@ -16,8 +20,11 @@ var dependencyModules = [
   'ngAnimate',
   'SampleApp.view1',
   'SampleApp.view2',
-  //'br.policyModule',
+  'pb.policyModule',
   'pb.capitalModule',
+  'pb.dashboardModule',
+  'pb.costModule',
+  'pb.loansModule',
   'pb.settingsModule'
 ];
 

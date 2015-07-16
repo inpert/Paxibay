@@ -1,6 +1,6 @@
-module.exports = ['$scope', pbCapitalController]; // 'pbCapitalService', 
+module.exports = ['$scope', 'pbCapitalService', pbCapitalController]; // 'pbCapitalService', 
 
-function pbCapitalController($scope) {
+function pbCapitalController($scope, pbCapitalService) {
   var vm = this; 
   vm.title = 'My capital List';
 }
