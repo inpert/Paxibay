@@ -1,5 +1,5 @@
 
-//var existingPoliciesDirective = require('./directives/pb.capital.table.directive.js');
+var existingPoliciesDirective = require('./directives/pb.capital.table.directive.js');
 
 angular.module('pb.capitalModule', [])
     .config(require('./pb.capital.routes.js'))

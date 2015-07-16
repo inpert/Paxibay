@@ -1,6 +1,6 @@
-module.exports = ['$q', '$http', '$rootScope', 'coreConfig', pbCapitalService];
+module.exports = ['$q','$http', '$rootScope', 'coreConfig', brPolicyService];
 
-function pbCapitalService($q, $http, $rootScope, coreConfig) {
+function brPolicyService($q,$http, $rootScope, coreConfig) {
     return {
         get: get,
         set: set,

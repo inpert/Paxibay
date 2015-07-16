@@ -2,7 +2,7 @@
 require('angular-route');
 require('angular-animate');
 
-require('./modules/br-policy/br.policy.app.js');
+//require('./modules/br-policy/br.policy.app');
 require('./modules/pb-capital/pb.capital.app.js');
 require('./modules/pb-settings/pb.settings.app.js');
 
@@ -16,7 +16,7 @@ var dependencyModules = [
   'ngAnimate',
   'SampleApp.view1',
   'SampleApp.view2',
-  'br.policyModule',
+  //'br.policyModule',
   'pb.capitalModule',
   'pb.settingsModule'
 ];

@@ -1,6 +1,6 @@
-module.exports = ['$scope', 'brPolicyService', brPolicyController];
+module.exports = ['$scope', pbCapitalController]; // 'pbCapitalService', 
 
-function brPolicyController($scope, brPolicyService) {
+function pbCapitalController($scope) {
   var vm = this; 
-  vm.title = 'My Policy List';
+  vm.title = 'My capital List';
 }
