@@ -2,10 +2,31 @@
     <h1>{{vm.title}}</h1>
     <div>
         <div class="col-md-8">
-            capital content goes here
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        <thead><tr><th>Name</th><th>note</th></tr></thead>
+                        <tbody>
+                            <tr ng-hide="products.length">
+                                <td colspan="2" class="text-center">No Data</td>
+                            </tr>
+                            <tr ng-repeat="item in vm.projects">
+                                <td>{{item.name}}</td>
+                                <td>{{item.note}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <button class="btn btn-primary"
+                                ng-click="vm.listProducts()">
+                            Load Data
+                        </button>
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
-            capital comment goes here
+            <pb-capital-existing></pb-capital-existing>
         </div>
     </div>
     <div class="clear"></div>

@@ -1,25 +1,34 @@
 module.exports = {
-  directive: ['coreConfig', 'brPolicyService', brExistingPoliciesDirective],
-  directivePageSelect: [brExistingPoliciesPageSelect],
-  controller: ['$scope', 'brPolicyService', 'coreConfig', brExistingPoliciesController]
+    directive: ['pbCapitalService', pbCapitalExistingDirective],
+    controller: ['$scope', 'pbCapitalService', '$http', pbCapitalExistingController]
 };
 
-function brExistingPoliciesDirective(coreConfig, brPolicyService) {
+function pbCapitalExistingDirective(pbCapitalService) {
 
-  return {
-    restrict: 'EA',
-    replace: true,
-    scope: {
-      details: '='
-    },
-    controller: 'brExistingPoliciesController as brPolicyDirectiveVm',
-    templateUrl: coreConfig.path() + '/modules/br-policy/directives/br.existingpolicy.table.tmpl.html',
-    link: function(scope, element, attrs, vm) {
+    return {
+        restrict: 'EA',
+        replace: true,
+        scope: {
+            details: '='
+        },
+        controller: 'pbCapitalExistingController as vm',
+        templateUrl: './modules/pb-capital/directives/pb.capital.table.tmpl.html',
+        link: function (scope, element, attrs, vm) {
 
-      scope.paginationTemplateUrl = coreConfig.path() + '/modules/br-policy/directives/br.custom.pagination.tmpl.html';
+        }
+    };
+}
 
-    }
-  };
+function pbCapitalExistingController($scope, pbCapitalService, $http) {
+    var vm = this;
+    vm.title = 'this is dirctive title';
+
+    var baseUrl = '/modules/pb-capital/project.json';
+    vm.listProducts = function () {
+        $http.get(baseUrl).success(function (data) {
+            vm.projects = data;
+        });
+    };
 }
 
 function brExistingPoliciesPageSelect() {
@@ -33,36 +42,4 @@ function brExistingPoliciesPageSelect() {
             });
         }
     };
-}
-
-function brExistingPoliciesController($scope, brPolicyService, coreConfig) {
-    var vm = this;
-
-    $scope.dateFormat = 'MMM d, y';
-
-    $scope.rowCollection = [];
-    $scope.displayCollection = [];
-    $scope.itemsByPage = 10;
-    //alert("here");
-
-    $scope.$watch("details", function (data) {
-
-        $scope.title = data.title;
-
-        var req = {
-            userid: data.userid,
-            role: data.role
-        };
-
-        brPolicyService.getExistingPolicies(req).then(function (result) {
-            $scope.rowCollection = result;
-            $scope.itemsByPage = data.itemsByPage;
-            $scope.displayCollection = [].concat($scope.rowCollection);
-
-            $scope.displayedPages = result.length / $scope.itemsByPage;
-
-        }, function (error) {
-            alert(error.message);
-        });
-    });
 }

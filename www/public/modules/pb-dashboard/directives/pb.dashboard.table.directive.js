@@ -1,5 +1,6 @@
 ﻿module.exports = {
     directive: ['pbDashboardService', pbDashboardTableDirective],
+    constant: ['pbDashboardService', pbDashboardTableDirective],
     controller: ['$scope', 'pbDashboardService', pbDashboardTableController]
 };
 
@@ -47,3 +48,4 @@ function pbDashboardTableController($scope, pbDashboardService) {
         //});
     });
 }
+
