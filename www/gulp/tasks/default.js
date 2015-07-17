@@ -12,7 +12,7 @@ var browsersync = require('browser-sync');
 gulp.task('dev', ['jshint', 'css', 'browserify'], function () {
 
     // watch for JS changes
-    gulp.watch('public/main.js', function () {
+    gulp.watch('public/app.js', function () {
         runSequence('clean', 'browserify', browsersync.reload);
     });
 

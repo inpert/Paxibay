@@ -13,7 +13,7 @@ require('./modules/pb-loans/pb.loans.app.js');
 require('./modules/view1/view1');
 require('./modules/view2/view2');
 
-var mainCtrl = require('./modules/weather/mainctrl');
+//var mainCtrl = require('./modules/weather/mainctrl');
 
 var dependencyModules = [
   'ngRoute',
@@ -44,10 +44,10 @@ angular.module('SampleApp', dependencyModules)
             redirectTo: '/'
         });
   }
-])
+]);
 
 //Load controller
-.controller('MainController', ['$scope', mainCtrl]);
+//.controller('MainController', ['$scope', mainCtrl]);
 
 angular.bootstrap(document, ['SampleApp']);
 

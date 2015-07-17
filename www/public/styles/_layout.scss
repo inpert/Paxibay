@@ -1,0 +1,95 @@
+// always show scrollbar
+body {
+    overflow-y: scroll;
+}
+
+.container-site,
+.container-head {
+    margin: 0 auto;
+    /*max-width: @site-max-width;*/
+}
+
+.container-site {
+    position: relative;
+    /*min-width: (@site-min-width - 20); // allow for scrollbar*/
+}
+
+.backstretch:before {
+    content: "";
+    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+}
+
+.section-session {
+    // nothing
+    min-height: 27em;
+}
+
+.section-header {
+    // nothing
+}
+
+.openedMenu{
+    width: $nav-expanded-width;
+    z-index: $zindex-navbar - 10;
+}
+
+.section-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $nav-collapse-width;
+    //.backface-visibility(hidden);
+}
+
+.section-content {
+    width: 100%;
+    padding: $grid-gutter-width;
+    padding-left: 7em; 
+}
+
+.tight{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.clickable{
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.section-content-after-menu{
+    padding-left: 17em !important; 
+}
+
+// body
+.navbar-fixed {
+    padding-top: $navbar-height;
+
+    .display-navigation {
+        top: $navbar-height;
+    }
+}
+.toolbar-fixed {
+    padding-top: ($navbar-height + $toolbar-height);
+
+    .display-navigation {
+        top: ($navbar-height + $toolbar-height);
+    }
+}
+
+// hack
+textarea {
+    max-width: 100% !important;
+}
+
+hr {
+  border-top: 2px solid $menu-bg-color !important;
+}

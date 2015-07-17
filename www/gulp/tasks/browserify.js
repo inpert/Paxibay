@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 
 gulp.task('browserify', function () {
     //gulp.src(['public/main.js', 'public/js/main.js'])
-    gulp.src(['public/main.js'])
+    gulp.src(['public/app.js'])
         .pipe(browserify({
             insertGlobals: true,
             debug: true
