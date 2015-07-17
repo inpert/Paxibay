@@ -1,6 +1,7 @@
 require('angular');
 require('angular-route');
 require('angular-animate');
+//require('angular-resource'); 
 
 require('../modules/pb-policy/pb.policy.app');
 require('../modules/pb-capital/pb.capital.app.js');
@@ -12,6 +13,8 @@ require('../modules/pb-loans/pb.loans.app.js');
 module.exports = (function () {
 
     var appModuleName = 'paxiApp';
+    var production = false;
+    var appPath =production ? '/Tools/CMAdmin/adminPortal' : '.';
 
     var appModuleDependencies = [
         //'ngResource',
@@ -37,17 +40,13 @@ module.exports = (function () {
     }];
 
     var appController = ['$scope', function ($scope) {
-
         var appvm = this;
-        appvm.title = 'Paxibay Enhancer';
-        appvm.menuUrl = 'modules/core/menu.tmpl.html';
 
-        // ng-include="'modules/core/menu.tmpl.html'"></div>
-        //appvm.menuUrl = coreConfig.path() + '/modules/core/menu.tmpl.html';
-        //appvm.brLoginUrl = coreConfig.path() + '/modules/br-login/br.login.tmpl.html';
-        //appvm.headerUrl = coreConfig.path() + '/modules/br-header/br.header.tmpl.html';
-        //appvm.footerUrl = coreConfig.path() + '/modules/br-footer/br.footer.tmpl.html';
-
+        appvm.title     = 'Paxibay Enhancer';
+        appvm.menuUrl   = appPath + '/modules/core/menu.tmpl.html';
+        appvm.loginUrl  = appPath + '/modules/pb-login/pb.login.tmpl.html';
+        appvm.headerUrl = appPath + '/modules/pb-header/pb.header.tmpl.html';
+        appvm.footerUrl = appPath + '/modules/pb-footer/pb.footer.tmpl.html';
     }];
 
     // Add a new vertical module
@@ -67,4 +66,3 @@ module.exports = (function () {
         registerModule: registerModule
     };
 })();
-

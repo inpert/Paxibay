@@ -12,11 +12,11 @@
 </head>
 <body ng-controller="appController as appvm">
     <div>
-        <div ng-include="coreVm.brLoginUrl"></div>
+        <div ng-include="appvm.loginUrl"></div>
         
         <!-- views -->
         <div>
-            <!--<div ng-include="appvm.headerUrl"></div>-->
+            <div ng-include="appvm.headerUrl"></div>
             <div class="section-navigation" ng-include="appvm.menuUrl"></div>
             <div class="section-content">
                 <h1>{{appvm.title}}</h1>
