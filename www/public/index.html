@@ -10,53 +10,21 @@
     <link rel="stylesheet" href="bower_lib/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="build/main.css" />
 </head>
-<body>
-
+<body ng-controller="appController as appvm">
     <div>
-
         <div ng-include="coreVm.brLoginUrl"></div>
-
+        
         <!-- views -->
         <div>
-            <div ng-include="coreVm.headerUrl"></div>
-            <div class="section-navigation" ng-include="'modules/core/menu.tmpl.html'"></div>
+            <!--<div ng-include="appvm.headerUrl"></div>-->
+            <div class="section-navigation" ng-include="appvm.menuUrl"></div>
             <div class="section-content">
+                <h1>{{appvm.title}}</h1>
+                
                 <div class="section-session" ng-view></div>
             </div>
         </div>
 
-
-        <!--<div class="container">
-        <h1>Angular-Gulp-Browserify-Starter</h1>
-    </div>
-
-    <ul class="menu">
-        <li><a href="#/view1">view1</a></li>
-        <li><a href="#/view2">view2</a></li>
-    </ul>-->
-
-
-        <!--<div id="navbar-state" ng-if="!(coreVm.location.path().indexOf('login')>0)" ng-class="{'navbar-fixedd': !(coreVm.location.path().indexOf('login')>0)}">
-            <div class="container-site" ng-controller="brCoreController as brCoreVm">
-                <div ng-include="coreVm.headerUrl"></div>
-                <div class="section-navigation" ng-class="{'lock-visibility': coreVm.isOpenMainMenu}" ng-include="coreVm.menuUrl"></div>
-                <div class="section-content" ng-class="{'section-content-after-menu': coreVm.isOpenMainMenu}">
-                    <error-message></error-message>
-                    <div session class="section-session" ng-view></div>
-                    <div ng-include="coreVm.footerUrl"></div>
-                </div>
-            </div>
-        </div>-->
-        <!--<div class="wrapper">
-            <div id="sidebar-wrapper">
-                <ng-include src="'views/sideMenu.html'"></ng-include>
-            </div>
-            <div id="page-content-wrapper">
-                <div ng-include="'views/weather.html'"></div>
-            </div>
-            modules/core/menu.tmpl.html
-
-        </div>-->
         <!-- scripts -->
         <script src="build/main.js"></script>
         <script src="bower_lib/jquery/dist/jquery.js"></script>

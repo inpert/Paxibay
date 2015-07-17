@@ -1,31 +1,13 @@
-//'use strict';
 
-var AppConfig = require('./config.js');
+var App = require('./config/config.js');
 
-//Start by defining the main module and adding the module dependencies
-angular.module(AppConfig.appModuleName, AppConfig.appModuleDependencies);
+angular.module(App.appModuleName, App.appModuleDependencies);
+angular.module(App.appModuleName).config(App.appConfig);
+angular.module(App.appModuleName).controller('appController', App.appController);
 
-// Setting HTML5 Location Mode
-angular.module(AppConfig.appModuleName).config(['$locationProvider', '$routeProvider',
-	function ($locationProvider, $routeProvider) {
-
-	    //$locationProvider.hashPrefix('!');
-	    $routeProvider
-        .when("/", {
-            templateUrl: "./modules/view2/view2.html"
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-
-	}
-]);
-
-//Then define the init function for starting up the application
 angular.element(document).ready(function() {
 	//Fixing facebook bug with redirect
-	//if (window.location.hash === '#_=_') window.location.hash = '#!';
+    if (window.location.hash === '#_=_') window.location.hash = '#!';
 
-	//Then init the app
-	angular.bootstrap(document, [AppConfig.appModuleName]);
+    angular.bootstrap(document, [App.appModuleName]);
 });
