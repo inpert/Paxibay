@@ -2,7 +2,10 @@ require('angular');
 require('angular-route');
 require('angular-animate');
 require('angular-resource');
-//require('kendo-ui-core');
+require('angular-ui-router');       // 'ui.router',
+require('angular-ui-bootstrap');    // 'ui.bootstrap',
+
+
 
 require('../modules/pb-policy/pb.policy.app');
 require('../modules/pb-capital/pb.capital.app.js');
@@ -19,9 +22,9 @@ module.exports = (function () {
 
     var appModuleDependencies = [
         'kendo.directives',
+        'ui.bootstrap',
+        'ui.router',
         'ngResource',
-        //'ui.bootstrap',
-        //'ui.router',
         'ngRoute',
         'ngAnimate',
         'pb.policyModule',

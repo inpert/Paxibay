@@ -12,6 +12,7 @@
     "fontawesome": "~4.3.0",
     "bootstrap": "~3.3.5",
     "animate.less": "*",
-    "kendo-ui-core": "~2015.2.720"
+    "kendo-ui-core": "~2015.2.720",
+    "angular-ui-router": "~0.2.15"
   }
 }
