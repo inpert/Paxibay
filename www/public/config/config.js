@@ -1,7 +1,8 @@
 require('angular');
 require('angular-route');
 require('angular-animate');
-//require('angular-resource'); 
+require('angular-resource');
+//require('kendo-ui-core');
 
 require('../modules/pb-policy/pb.policy.app');
 require('../modules/pb-capital/pb.capital.app.js');
@@ -17,7 +18,10 @@ module.exports = (function () {
     var appPath =production ? '/Tools/CMAdmin/adminPortal' : '.';
 
     var appModuleDependencies = [
-        //'ngResource',
+        'kendo.directives',
+        'ngResource',
+        //'ui.bootstrap',
+        //'ui.router',
         'ngRoute',
         'ngAnimate',
         'pb.policyModule',
@@ -41,6 +45,8 @@ module.exports = (function () {
 
     var appController = ['$scope', function ($scope) {
         var appvm = this;
+
+        appvm.phoneOptions = ['phone1', 'phone2', 'phone3', 'phone4'];
 
         appvm.title     = 'Paxibay Enhancer';
         appvm.menuUrl   = appPath + '/modules/core/menu.tmpl.html';

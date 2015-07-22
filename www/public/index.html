@@ -8,7 +8,12 @@
     <title>Paxibay Enhancer</title>
     <!-- styles -->
     <link rel="stylesheet" href="bower_lib/fontawesome/css/font-awesome.css" />
+    <!--<link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.default.min.css" rel="stylesheet" />-->
+    <link href="bower_lib/kendo-ui-core/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="bower_lib/kendo-ui-core/styles/kendo.default.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="build/main.css" />
+
 </head>
 <body ng-controller="appController as appvm">
     <div>
@@ -20,14 +25,16 @@
             <div class="section-navigation" ng-include="appvm.menuUrl"></div>
             <div class="section-content">
                 <h1>{{appvm.title}}</h1>
-                
                 <div class="section-session" ng-view></div>
             </div>
         </div>
     </div>
     <!-- scripts -->
-    <script src="build/main.js"></script>
     <script src="bower_lib/jquery/dist/jquery.js"></script>
     <script src="bower_lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="build/main.js"></script>
+    <script src="bower_lib/kendo-ui-core/js/kendo.ui.core.min.js"></script>
+    <script src="bower_lib/kendo-ui-core/js/kendo.angular.min.js"></script>
 </body>
 </html>

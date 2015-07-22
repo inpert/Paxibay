@@ -11,6 +11,7 @@
     "bootstrap-sass-official": "~3.3.5",
     "fontawesome": "~4.3.0",
     "bootstrap": "~3.3.5",
-    "animate.less": "*"
+    "animate.less": "*",
+    "kendo-ui-core": "~2015.2.720"
   }
 }

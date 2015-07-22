@@ -3,23 +3,46 @@
     <div>
         <div class="col-md-8">
             cost content goes here
+            
+            <input kendo-numerictextbox k-min="1" k-max="100" k-ng-model="vm.value" />
+            <input kendo-numerictextbox />
+            <label>Birthday: <input kendo-date-picker /></label>
+            <label>
+                Number:
+                <input type="number" name="input" ng-model="vm.value" style="width:100px"
+                       min="1" max="9" required>
+            </label>
+            <div kendo-tab-strip k-content-urls="[ null, null, './modules/pb-cost/pb.cost.tmpl - Copy.html' ]">
+                <!-- tab list -->
+                <ul>
+                    <li class="k-state-active">First</li>
+                    <li>Second tab</li>
+                    <li>Ajax content</li>
+                </ul>
+                <div style="padding: 1em">
+                    This is the first tab
+                </div>
+                <div style="padding: 1em">
+                    This is the second tab
+                </div>
+                <div></div>
+            </div>
+
+            <tabset>
+                <tab heading="Simple" active="vm.tabActivity[0]">
+                    <ng-include src="'./modules/pb-cost/pb.cost.tmpl - Copy.html'"></ng-include>
+                </tab>
+                <tab heading="Advanced" active="vm.tabActivity[1]">
+                    <ng-include src="'./modules/pb-cost/pb.cost.tmpl - Copy.html'"></ng-include>
+                </tab>
+            </tabset><br />
         </div>
         <div class="col-md-4">
             cost comment goes here
         </div>
     </div>
     <div class="clear"></div>
+
 </div>
 
 
-
-
-<!--<div>
-    <div class="col-md-8">
-        <br-policy-search></br-policy-search>
-        <br-my-policies details="vm.myPolicies"></br-my-policies>
-    </div>
-    <div class="col-md-4">
-        <br-welcome-commission-recommendation></br-welcome-commission-recommendation>
-    </div>
-</div>-->

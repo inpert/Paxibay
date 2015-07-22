@@ -3,11 +3,20 @@ module.exports = ['$scope', '$http', 'pbCapitalService', pbCapitalController];
 function pbCapitalController($scope, $http, pbCapitalService) {
     var vm = this; 
     vm.title = 'My capital List';
+    $scope.city = { name: 'toronto' };
 
-    var baseUrl = '/modules/pb-capital/project.json';
+    pbCapitalService.getCapital();
+
     vm.listProducts = function () {
-        $http.get(baseUrl).success(function (data) {
-            vm.projects = data;
-        });
+        vm.projects = pbCapitalService.getMetaData();
     };
+
+    vm.checkWeather = function () {
+        var city = {
+            q: $scope.city.name
+        };
+
+        vm.weather = pbCapitalService.getWeather(city);
+    };
+
 }

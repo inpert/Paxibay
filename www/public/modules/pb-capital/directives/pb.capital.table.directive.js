@@ -23,11 +23,8 @@ function pbCapitalExistingController($scope, pbCapitalService, $http) {
     var vm = this;
     vm.title = 'this is dirctive title';
 
-    var baseUrl = '/modules/pb-capital/project.json';
     vm.listProducts = function () {
-        $http.get(baseUrl).success(function (data) {
-            vm.projects = data;
-        });
+        vm.projects = pbCapitalService.getMetaData();
     };
 }
 
