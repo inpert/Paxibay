@@ -23,7 +23,7 @@ function pbCapitalExistingController($scope, pbCapitalService, $http) {
     var vm = this;
     vm.title = 'this is dirctive title';
 
-    vm.listProducts = function () {
+    vm.listProjects = function () {
         vm.projects = pbCapitalService.getMetaData();
     };
 }

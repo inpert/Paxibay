@@ -7,7 +7,7 @@ function pbCapitalController($scope, $http, pbCapitalService) {
 
     pbCapitalService.getCapital();
 
-    vm.listProducts = function () {
+    vm.listProjects = function () {
         vm.projects = pbCapitalService.getMetaData();
     };
 
