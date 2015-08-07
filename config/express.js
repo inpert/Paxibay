@@ -7,15 +7,14 @@ var _ = require('underscore'),
 	bodyParser = require('body-parser'),
 	//session = require('express-session'),
 	//compression = require('compression'),
-	methodOverride = require('method-override');
+	methodOverride = require('method-override'),
 	//cookieParser = require('cookie-parser'),
 	//config = require('./config');
-	//path = require('path');
+	path = require('path');
 
 var routes = require('../app/routes.js');
 
 module.exports = function (db) {
-    // Initialize express app
     var app = express();
 
     //// Setting application local variables
@@ -25,8 +24,6 @@ module.exports = function (db) {
     //app.locals.facebookAppId = config.facebook.clientID;
     //app.locals.jsFiles = config.getJavaScriptAssets();
     //app.locals.cssFiles = config.getCSSAssets();
-
-    // MongoDB: mongodb://ds029187.mongolab.com:29187/paxibay
 
     // configuration ==========================================
     app.use(morgan('dev'));
@@ -45,8 +42,8 @@ module.exports = function (db) {
         }
     });
 
-    //app.set('port', process.env.PORT || 5660);
+    var www = express.static(path.resolve('./www/public'));
+    app.use('/', www);
 
-    // Return Express server instance
     return app;
 };
