@@ -5,6 +5,12 @@ var projectData = require('./models/pbprojectFake');
 module.exports = [
     {
         apiType: 'get',
+        path: '/',
+        fn: function (req, res) {
+            res.render("index");
+        }
+    }, {
+        apiType: 'get',
         path: '/api/project',
         fn: function (req, res) {
             setTimeout(function () {

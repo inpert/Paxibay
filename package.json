@@ -20,7 +20,7 @@
     "express-session": "^1.11.3",
     "kendo-ui-core": "^1.0.2",
     "method-override": "~2.1.1",
-    "mongoose": "^4.1.0",
+    "mongoose": "^3.8.15",
     "morgan": "~1.1.1",
     "open": "0.0.5",
     "passport": "^0.2.2",

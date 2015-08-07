@@ -13,6 +13,7 @@ var _ = require('underscore'),
 	path = require('path');
 
 var routes = require('../app/routes.js');
+var employeeController = require("../app/controllers/employeeController.js");
 
 module.exports = function (db) {
     var app = express();
@@ -32,10 +33,6 @@ module.exports = function (db) {
     app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
     app.use(methodOverride());
 
-    app.get("/", function (req, res) {
-        res.render("index");
-    })
-
     _.each(routes, function (route) {
         if (route.apiType === 'put') {
             app.put(route.path, route.fn);
@@ -50,5 +47,7 @@ module.exports = function (db) {
     app.set('views', './app/views');
     app.use(express.static(path.resolve('./www/public')));
 
+    employeeController.init(app);
+    
     return app;
 };
