@@ -32,6 +32,10 @@ module.exports = function (db) {
     app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
     app.use(methodOverride());
 
+    app.get("/", function (req, res) {
+        res.render("index");
+    })
+
     _.each(routes, function (route) {
         if (route.apiType === 'put') {
             app.put(route.path, route.fn);
@@ -42,8 +46,9 @@ module.exports = function (db) {
         }
     });
 
-    var www = express.static(path.resolve('./www/public'));
-    app.use('/', www);
+    app.set('view engine', 'vash');
+    app.set('views', './app/views');
+    app.use(express.static(path.resolve('./www/public')));
 
     return app;
 };
