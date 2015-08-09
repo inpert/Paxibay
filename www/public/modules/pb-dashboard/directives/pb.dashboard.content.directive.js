@@ -24,19 +24,21 @@ function pbDashboardContentController($scope, pbDashboardService) {
     var vm = this;
     vm.titile = 'this vm directive title';
     vm.productCount = 'Product Quantity:';
-    $scope.qty;
+    $scope.qty = 0;
     vm.project = {};
     
     vm.tabs = [];
     $scope.$watch('qty', function (qty) {
         vm.tabs = [];
-        for (var i = 1; i < qty + 1; i++) {
+        for (var i = 0; i < qty; i++) {
+
             vm.tabs.push({
-                title: "title" + i,
-                name: "profile" + i,
+                title: vm.project.products[i].name,
+                name: vm.project.products[i].name,
                 active: false,
                 content: "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html"
             });
+
         }
     });
 
@@ -46,7 +48,7 @@ function pbDashboardContentController($scope, pbDashboardService) {
 
 
     pbDashboardService.getProducts().$promise.then(function (data) {
-        vm.project = data
-        $scope.qty = vm.project[0].products.length;
+        vm.project = data[0];
+        $scope.qty = vm.project.products.length;
     });
 }
