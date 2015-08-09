@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title></title>
-		<link href="styles/site.css" rel="stylesheet" />
+		<link href="js/site.css" rel="stylesheet" />
     </head>                                                                                          
 	<body>
 		<div ng-app="empViewdata">

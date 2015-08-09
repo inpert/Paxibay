@@ -1,7 +1,7 @@
 ﻿module.exports = [{
     "products": [
-        { "name": "Product1", "scale": 100, "unit": "", "sample": "ton", "prise": 0 },
-        { "name": "Product2", "scale": 200, "unit": "", "sample": "ton", "prise": 0 }
+        { "name": "Product 1", "scale": 100, "unit": "thousand", "symbol": "ton", "price": 110 },
+        { "name": "Product 2", "scale": 200, "unit": "", "symbol": "ton", "price": 120 }
     ],
     "period": [
         { "val01": 0 }, { "val02": 0 }, { "val03": 0 }, { "val04": 0 }, { "val05": 0 }, { "val06": 0 }, { "val07": 0 }, { "val08": 0 }, { "val09": 0 }, { "val10": 0 },

@@ -22,14 +22,16 @@ function pbDashboardContentDirective(pbDashboardService) {
 function pbDashboardContentController($scope, pbDashboardService) {
  
     var vm = this;
-    vm.titile = 'this vm directive title';
+    vm.titile = 'this vm directive titleaa';
     vm.productCount = 'Product Quantity:';
-    vm.qtyInitial = 
+    vm.qtyInitial = 0;
     $scope.qty = 0;
     vm.project = {};
+    vm.activeProduct = {};
     
     vm.tabs = [];
     $scope.$watch('qty', function (qty) {
+
         vm.tabs = [];
 
         if (qty <= vm.qtyInitial) {
@@ -37,38 +39,34 @@ function pbDashboardContentController($scope, pbDashboardService) {
                 vm.tabs.push({
                     title: vm.project.products[i].name,
                     name: vm.project.products[i].name,
-                    active: false,
-                    content: "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html"
                 });
             }
         }
         else {
-            
+
             for (var j = 0; j < vm.qtyInitial; j++) {
                 vm.tabs.push({
                     title: vm.project.products[j].name,
                     name: vm.project.products[j].name,
-                    active: false,
-                    content: "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html"
                 });
             }
 
-            for (var k = vm.qtyInitial; k < qty; k++) {
+            for (var k = vm.qtyInitial + 1; k <= qty; k++) {
                 vm.tabs.push({
                     title: "Product " + k,
-                    name: "Product" + k,
-                    active: false,
-                    content: "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html"
+                    name: "Product " + k,
                 });
             }
         }
-
     });
 
-    vm.activateTab = function () {
-        var str = 'this is testing';
-    };
+    vm.activateTab = function (name) {
+        vm.activeProduct = vm.tabs.filter(function (tab) {
+            return tab.name == name;
+        })[0];
 
+        console.log(vm.activeProduct.name);
+    };
 
     pbDashboardService.getProducts().$promise.then(function (data) {
         vm.project = data[0];

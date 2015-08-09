@@ -143,3 +143,23 @@ $brand-info:            #5bc0de;
 
 
 //====================
+.product-panel section {
+    padding: 0 1em .5em;
+}
+.product-pane h1 {
+	margin: .5em 0;
+}
+.product-pane label {
+	float: left;
+    width: 10em;
+    text-align: right;
+    padding-bottom: .5em;
+}
+.product-pane input {
+    margin-left: 1em;
+    margin-bottom: .5em;
+}
+
+.latblesection {
+    color: #00accd;
+}

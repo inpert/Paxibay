@@ -11,6 +11,7 @@
     <link href="bower_lib/kendo-ui-core/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="bower_lib/kendo-ui-core/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="bower_lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="build/main.css" />
 
 </head>
@@ -25,18 +26,6 @@
             <div class="section-content">
                 <h1>{{appvm.title}}</h1>
                 <div class="section-session" ng-view></div>
-
-				<!--
-				<tabset>
-					<tab heading="Simple">
-						aaaa
-					</tab>
-					<tab heading="Advanced">
-						bbbb
-					</tab>
-				</tabset><br />
-				-->
-
             </div>
         </div>
     </div>
