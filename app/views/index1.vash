@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+		<link href="styles/site.css" rel="stylesheet" />
+    </head>                                                                                          
+	<body>
+		<div ng-app="empViewdata">
+			<div ng-controller="empController">
+				<form class="form-horizontal" name="empForm" ng-submit="create()">
+					<div class="form-group">
+					<input type="text" id="empName" ng-model="newEmployee.empName" />
+					<input type="submit" class="btn btn-primary" value="Create" />
+					</div>
+				</form>
+				<div ng-repeat="e in employees">
+				{{ e.name }}
+				</div>
+			</div>
+		</div>
+
+		<script src="bower_lib/jquery/dist/jquery.js"></script>
+		<script src="bower_lib/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_lib/angular/angular.js"></script>
+		<script src="bower_lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="js/empViewdata.js"></script>
+    </body>                                                                                       
+</html>
+
+

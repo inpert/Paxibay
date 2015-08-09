@@ -1,57 +1,26 @@
-<div class="side-panel">
-  <div class="side-panel-container">
-    <h3>
-        {{vm.titile}}
-    	Notification
-    	<a class="clickable no-line" ng-click="vmNotifications.isClosed = !vmNotifications.isClosed">
-    		<i class="icon-br-arrow-down-2 pull-right small-icon" ng-if="vmNotifications.isClosed"></i>
-    		<i class="icon-br-arrow-up-2 pull-right small-icon" ng-if="!vmNotifications.isClosed"></i>
-    	</a>
-    </h3>
-    <div class="heightAnimated" ng-class="{'heightOpened': !vmNotifications.isClosed, 'heightClosed': vmNotifications.isClosed}">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-   
-    
-    </div>
-    <button class="btn btn-info">
-    Action
-  </button>
-  </div>
-
-    <!--<div class="side-panel">
-        <div class="side-panel-container">
-            <h2>Comission Recommendation</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-
-            <table class="table table-striped table-bordered table-condensed">
-
-                <tbody>
-                    <tr ng-repeat="p in [1, 2, 3]">
-                        <td>
-                            <div class="col-xs-6">
-                                aaaa
-                            </div>
-                            <div class="col-xs-6">
-                                bbbb
-                            </div>
-
-                            <div class="col-xs-12">ssss</div>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="btn btn-info">
-                Action
-            </button>
+<div class="panel panel-default">
+    <div class="side-panel-container">
+        <h3>
+            {{vm.titile}}
+        </h3>
+        <br />
+        <div>
+            <label>
+                {{vm.productCount}}
+                <input type="number" name="input" ng-model="qty"
+                       style="width:100px" min="1" max="9" required>
+            </label>
         </div>
+        <br /><br />
+        <tabset>
+            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" select="vm.activateTab(tab.name)" class="fullwidthtabs">
+                <div ng-include="tab.content"></div>
+            </tab> 
+        </tabset>
 
-    </div>-->
-  
+       
+    </div>
+
 </div>
 
 

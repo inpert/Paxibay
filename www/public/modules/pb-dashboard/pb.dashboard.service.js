@@ -1,110 +1,42 @@
-module.exports = ['$q', '$http', '$rootScope', pbDashboardService];
+module.exports = ['$q', '$http', '$rootScope', '$resource', pbDashboardService];
 
-function pbDashboardService($q, $http, $rootScope) {
+function pbDashboardService($q, $http, $rootScope, $resource) {
+    var baseUrl = '/api/fmproducts/';
+    var _metaData = {};
+    var _weatherData = {};
+    var resource = $resource(baseUrl + ":id", { id: "@_id" });
+
     return {
-        //get: get,
-        //set: set,
-        //getExistingPolicies: getExistingPolicies,
-        //getNewPolicies: getNewPolicies,
-        //getMyPolicies: getMyPolicies,
+        getProducts: getProducts,
+        getMetaData: getMetaData
     };
+  
+    function getMetaData() {
+        return _metaData;
+    }
 
-  //function getMyPolicies(req) {
-  //    $rootScope.$broadcast('systemIsLoading');
+    function getProducts_() {
+        //$http.get(baseUrl).success(function (data) {
+        //    $rootScope.$broadcast('productsLoaded', { products: data });
+        //});
 
-  //    var def = $q.defer();
-  //    var i;
-
-  //    var url = coreConfig.urlPath() + '/api/dashboard/myPolicies/';
-  //    $http.post(url, req).
-  //        success(function (data, status, headers, config) {
-  //            $rootScope.$broadcast('systemIsLoaded');
-  //            def.resolve(data);
-  //        }).
-  //        error(function (data, status, headers, config) {
-  //            def.reject("Failed");
-  //            alert(JSON.stringify('received error ' + data));
-  //            $rootScope.$broadcast('systemIsLoaded');
-  //        });
+        resource.query(function (data) {
+            $rootScope.$broadcast('productsLoaded', { products: data });
+        });
+    }
 
 
-  //    return def.promise;
-  //}
-  //function getExistingPolicies(req) {
-  //  $rootScope.$broadcast('systemIsLoading');
+    function getProducts() {
+        return resource.query();
+    }
 
-  //  var def = $q.defer();
-  //  var i;
-
-  //  var url = coreConfig.urlPath() + '/api/dashboard/existingPolicies/';
-  //  $http.post(url,req).
-  //      success(function(data, status, headers, config) {
-  //        $rootScope.$broadcast('systemIsLoaded');
-  //        def.resolve(data);
-  //      }).
-  //      error(function(data, status, headers, config) {
-  //        def.reject("Failed");
-  //        alert(JSON.stringify('received error '+ data));
-  //        $rootScope.$broadcast('systemIsLoaded');
-  //      });
+    //$scope.listProducts = function () {
+    //    $scope.products = $scope.productsResource.query();
+    //    $scope.products.$promise.then(function (data) {
+    //        // do something with the data
+    //    });
+    //}
 
 
-  //  return def.promise;
-  //}
 
-  //function getNewPolicies(req) {
-  //  $rootScope.$broadcast('systemIsLoading');
-
-  //  var def = $q.defer();
-  //  var i;
-
-  //  var url = coreConfig.urlPath() + '/api/dashboard/newPolicies/';
-  //  $http.post(url,req).
-  //      success(function(data, status, headers, config) {
-  //        $rootScope.$broadcast('systemIsLoaded');
-  //        def.resolve(data);
-  //      }).
-  //      error(function(data, status, headers, config) {
-  //        def.reject("Failed");
-  //        alert(JSON.stringify('received error '+ data));
-  //        $rootScope.$broadcast('systemIsLoaded');
-  //      });
-
-
-  //  return def.promise;
-  //}
-
-  //function get() {
-  //  $rootScope.$broadcast('systemIsLoading');
-
-  //  var url = coreConfig.urlPath() + '/api/clients/' + coreConfig.getClient() + '/brPolicy/get';
-  //  return $http.get(url)
-  //    .success(function(data, status, headers) {
-  //      $rootScope.$broadcast('systemIsLoaded');
-
-  //      // console.log('configuration loaded');	    
-  //    })
-  //    .error(function(data, status, headers) {
-  //      console.log('brPolicyService failed to get');
-  //      $rootScope.$broadcast('systemIsLoaded');
-
-  //    });
-  //}
-
-  //function set(info) {
-  //  $rootScope.$broadcast('systemIsLoading');
-
-  //  var url = coreConfig.urlPath() + '/api/clients/' + coreConfig.getClient() + '/brPolicy/post';
-  //  return $http.post(url, info)
-  //    .success(function(data, status, headers) {
-  //      $rootScope.$broadcast('systemIsLoaded');
-
-  //      // console.log('configuration loaded');	    
-  //    })
-  //    .error(function(data, status, headers) {
-  //      console.log('brPolicyService failed to post');
-  //      $rootScope.$broadcast('systemIsLoaded');
-
-  //    });
-  //}
 }

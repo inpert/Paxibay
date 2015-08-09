@@ -2,6 +2,9 @@
 var productsData = require('./models/pbproductsFake');
 var projectData = require('./models/pbprojectFake');
 
+var fm02_products = require('./models/fm02-productsFake');
+
+
 module.exports = [
     {
         apiType: 'get',
@@ -15,6 +18,14 @@ module.exports = [
         fn: function (req, res) {
             setTimeout(function () {
                 res.send(projectData);
+            }, 1000);
+        }
+    }, {
+        apiType: 'get',
+        path: '/api/fmproducts',
+        fn: function (req, res) {
+            setTimeout(function () {
+                res.send(fm02_products);
             }, 1000);
         }
     }, {
