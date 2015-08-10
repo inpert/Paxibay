@@ -1,7 +1,7 @@
 ﻿module.exports = [{
     "products": [
-        { "name": "Product 1", "scale": 100, "unit": "thousand", "symbol": "ton", "price": 110 },
-        { "name": "Product 2", "scale": 200, "unit": "", "symbol": "ton", "price": 120 }
+        { "product_id": "Product 1", "name": "Product 1", "scale": 100, "unit": "thousand", "symbol": "ton1", "price": 110, "content": "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html" },
+        { "product_id": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120, "content": "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html" }
     ],
     "period": [
         { "val01": 0 }, { "val02": 0 }, { "val03": 0 }, { "val04": 0 }, { "val05": 0 }, { "val06": 0 }, { "val07": 0 }, { "val08": 0 }, { "val09": 0 }, { "val10": 0 },

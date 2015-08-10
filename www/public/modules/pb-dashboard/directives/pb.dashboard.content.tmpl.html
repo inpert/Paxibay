@@ -13,13 +13,11 @@
         </div>
         <br /><br />
         <tabset>
-            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.name)" >
-                <!--<div ng-include="tab.content"></div>
-                    select="vm.activateTab(tab.name)" class="fullwidthtabs"
-                    -->
-                ASDF
+            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.title)" >
+                <div ng-include="tab.content"></div>
             </tab> 
         </tabset>
+        <br /><br />
     </div>
 </div>
 

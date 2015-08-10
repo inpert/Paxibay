@@ -3,19 +3,23 @@
     <section class="product-panel">
 
         <label for="product_name" class="latblesection">Name</label>
-        <input type="text" id="product_name" ng-model="vm.project.products[0].name"><br>
+        <input type="text" id="product_name" ng-model="vm.activeProduct.name"><br>
 
         <label for="scale">Scale</label>
-        <input type="text" id="scale" ng-model="vm.project.products[0].scale"><br>
+        <input type="text" id="scale" ng-model="vm.activeProduct.scale"><br>
 
         <label for="unit">Unit</label>
-        <input type="text" id="unit" ng-model="vm.project.products[0].unit"><br>
+        <select ng-model="vm.activeProduct.unit"
+                ng-options="unit.lookupCode as unit.description for unit in unitOptions">
+        </select>
 
         <label for="symbol">Symbol</label>
-        <input type="text" id="symbol" ng-model="vm.project.products[0].symbol"><br>
+        <select ng-model="vm.activeProduct.symbol"
+                ng-options="symbol.lookupCode as symbol.description for symbol in symbolOptions">
+        </select>
 
         <label for="price">Price</label>
-        <input type="text" id="price" ng-model="vm.project.products[0].price"><br>
+        <input type="text" id="price" ng-model="vm.activeProduct.price"><br>
 
     </section>
 
