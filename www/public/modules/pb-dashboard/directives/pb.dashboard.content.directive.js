@@ -19,6 +19,7 @@ function pbDashboardContentDirective(pbDashboardService) {
   };
 }
 
+// Directive Controller
 function pbDashboardContentController($scope, pbDashboardService) {
  
     var vm = this;
@@ -32,75 +33,29 @@ function pbDashboardContentController($scope, pbDashboardService) {
 
     vm.tabs = [];
     $scope.$watch('qty', function (qty) {
-
         vm.tabs = [];
-
-        if (qty <= vm.qtyInitial) {
-            for (var i = 0; i < qty; i++) {
-                vm.tabs.push({
-                    title: vm.project.products[i].product_id,
-                    name: vm.project.products[i].name,
-                    scale: vm.project.products[i].scale,
-                    unit: vm.project.products[i].unit,
-                    symbol: vm.project.products[i].symbol,
-                    price: vm.project.products[i].price,
-                    content: vm.project.products[i].content
-                });
-            }
+        for (var i = 0; i < qty; i++) {
+            vm.tabs.push({
+                code: vm.project.products[i].code,
+                title: vm.project.products[i].title,
+                content: vm.project.content_link
+            });
         }
-        else {
-
-            for (var j = 0; j < vm.qtyInitial; j++) {
-                vm.tabs.push({
-                    title: vm.project.products[j].product_id,
-                    name: vm.project.products[j].name,
-                    scale: vm.project.products[j].scale,
-                    unit: vm.project.products[j].unit,
-                    symbol: vm.project.products[j].symbol,
-                    price: vm.project.products[j].price,
-                    content: vm.project.products[j].content
-                });
-            }
-
-            for (var k = vm.qtyInitial + 1; k <= qty; k++) {
-                var newProduct = {
-                    title: 'Product ' + k,
-                    name: 'Product ' + k,
-                    scale: 100,
-                    unit: 'handred',
-                    symbol: 'ton',
-                    price: 110,
-                    content: "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html"
-                };
-
-                vm.tabs.push(newProduct);
-                vm.project.products.push(newProduct);
-            }
-        }
-
-       
-        
     });
 
-    vm.activateTab = function (name) {
+    vm.activateTab = function (code) {
         vm.activeProduct = vm.project.products.filter(function (tab) {
-            return tab.name == name;
+            return tab.code == code;
         })[0];
 
-        //$scope.unitOptions = [{ name: "thousand", id: "thousand" }, { name: "hundred", id: "hundred" }];
-        //$scope.selectedUnitOption = vm.activeProduct.unit;
-        //$scope.selectedUnitOption = $scope.unitOptions[1];
-
-        console.log(vm.activeProduct.name);
+        console.log(vm.activeProduct.title);
     };
 
     pbDashboardService.getProducts().$promise.then(function (data) {
         vm.project = data[0];
-        $scope.qty = vm.project.products.length;
+        $scope.qty = vm.project.products_amount;
         vm.qtyInitial = $scope.qty;
         vm.activeProduct = vm.project.products[0];
-
-        //$scope.unitOptions = [{ name: "thousand" }, { name: "hundred" }];
 
         $scope.unitOptions = [
             { 'lookupCode': 'thousand', 'description': 'thousand' },

@@ -2,15 +2,15 @@
     "products_amount": 2,
     "content_link": "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html",
     "products": [
-        { "code": "01", "title": "Product 1", "name": "Product 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
-        { "code": "02", "title": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "03", "title": "Product 3", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "04", "title": "Product 4", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "05", "title": "Product 5", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "06", "title": "Product 6", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "07", "title": "Product 7", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "08", "title": "Product 8", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
-        { "code": "09", "title": "Product 9", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
+        { "product_id": "Product 1", "name": "", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
+        { "product_id": "Product 2", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 3", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 4", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 5", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 6", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 7", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 8", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+        { "product_id": "Product 9", "name": "", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
     ],
     "scales": [
         { "y01": "", "val01": [0, 0, 0, 0, 0, 0, 0, 0, 0] }, { "y02": "", "val02": [0, 0, 0, 0, 0, 0, 0, 0, 0] }, { "y03": "", "val03": [0, 0, 0, 0, 0, 0, 0, 0, 0] }, { "y04": "", "val04": [0, 0, 0, 0, 0, 0, 0, 0, 0] }, { "y05": "", "val05": [0, 0, 0, 0, 0, 0, 0, 0, 0] },
