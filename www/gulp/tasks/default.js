@@ -3,6 +3,7 @@
 var config = require('../config');
 var gulp = require('gulp');
 var connect = require('gulp-connect');
+// .use(require('connect-livereload')({ port: 35729 }))
 var bower = require('gulp-bower');
 var minifyCSS = require('gulp-minify-css');
 var runSequence = require('run-sequence');

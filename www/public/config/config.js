@@ -7,12 +7,19 @@ require('angular-ui-bootstrap');    // 'ui.bootstrap',
 
 
 
-require('../modules/pb-policy/pb.policy.app');
 require('../modules/pb-capital/pb.capital.app.js');
 require('../modules/pb-settings/pb.settings.app.js');
 require('../modules/pb-dashboard/pb.dashboard.app.js');
 require('../modules/pb-cost/pb.cost.app.js');
-require('../modules/pb-loans/pb.loans.app.js');
+
+require('../modules/pb-taxes/pb.taxes.app.js');
+require('../modules/pb-liquidity/pb.liquidity.app.js');
+require('../modules/pb-depreciation/pb.depreciation.app.js');
+require('../modules/pb-pjplan/pb.pjplan.app.js');
+require('../modules/pb-pjloans/pb.pjloans.app.js');
+require('../modules/pb-pjframe/pb.pjframe.app');
+
+
 
 module.exports = (function () {
 
@@ -27,19 +34,23 @@ module.exports = (function () {
         'ngResource',
         'ngRoute',
         'ngAnimate',
-        'pb.policyModule',
         'pb.capitalModule',
         'pb.dashboardModule',
         'pb.costModule',
-        'pb.loansModule',
-        'pb.settingsModule'
+        'pb.settingsModule',
+        'pb.taxesModule',
+        'pb.liquidityModule',
+        'pb.depreciationModule',
+        'pb.pjplanModule',
+        'pb.pjloansModule',
+        'pb.pjframeModule'
     ];
 
     var appConfig = ['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         //$locationProvider.hashPrefix('!');
         $routeProvider
         .when("/", {
-            templateUrl: "./modules/view2/view2.html"
+            templateUrl: "./modules/pb-dashboard/pb.dashboard.tmpl.html" 
         })
         .otherwise({
             redirectTo: '/'

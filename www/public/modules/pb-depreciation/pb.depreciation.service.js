@@ -1,12 +1,12 @@
-module.exports = ['$q', '$http', '$rootScope', 'coreConfig', brSettingsService];
+module.exports = ['$q', '$http', '$rootScope', pbDepreciationService];
 
-function brSettingsService($q, $http, $rootScope, coreConfig) {
+function pbDepreciationService($q, $http, $rootScope) {
     return {
-        get: get,
-        set: set,
-        getExistingPolicies: getExistingPolicies,
-        getNewPolicies: getNewPolicies,
-        getMyPolicies: getMyPolicies,
+        //get: get,
+        //set: set,
+        //getExistingPolicies: getExistingPolicies,
+        //getNewPolicies: getNewPolicies,
+        //getMyPolicies: getMyPolicies,
     };
 
   function getMyPolicies(req) {

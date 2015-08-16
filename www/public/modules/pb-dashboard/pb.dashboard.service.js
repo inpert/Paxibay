@@ -2,15 +2,49 @@ module.exports = ['$q', '$http', '$rootScope', '$resource', pbDashboardService];
 
 function pbDashboardService($q, $http, $rootScope, $resource) {
     var baseUrl = '/api/fmproducts/';
+    // /api/fmproducts/:id
     var _metaData = {};
     var _weatherData = {};
     var resource = $resource(baseUrl + ":id", { id: "@_id" });
 
     return {
         getProducts: getProducts,
-        getMetaData: getMetaData
+        getMetaData: getMetaData,
+        updateProduct: updateProduct,
+        get: get,
+        set: set
     };
   
+    function get() {
+        return $resource('/api/project').query().$promise;
+    }
+
+    function set(info) {
+
+        var url = '/api/project/AC1231ABB';
+        info[0].name = info[0].name + " asdf";
+        //info[0].$save();
+
+        //$http({
+        //    url: url,
+        //    method: "POST",
+        //    data: info
+        //}).success(function (modifiedProduct) {
+        //    console.log('configuration UPDATE');
+        //});
+
+        return $http.post(url, info)
+          .success(function (data, status, headers) {
+              console.log('configuration UPDATE');
+              console.log(data);
+          })
+          .error(function (data, status, headers) {
+              console.log('brCoreService failed to post');
+              console.log(status);
+          });
+    }
+
+
     function getMetaData() {
         return _metaData;
     }
@@ -18,25 +52,61 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
     function getProducts_() {
         //$http.get(baseUrl).success(function (data) {
         //    $rootScope.$broadcast('productsLoaded', { products: data });
-        //});
+        //}); 
 
         resource.query(function (data) {
             $rootScope.$broadcast('productsLoaded', { products: data });
         });
     }
 
-
     function getProducts() {
+               
         return resource.query();
     }
 
-    //$scope.listProducts = function () {
-    //    $scope.products = $scope.productsResource.query();
-    //    $scope.products.$promise.then(function (data) {
-    //        // do something with the data
-    //    });
-    //}
-
-
+    function updateProduct (product) {
+        product.$save();
+    }
 
 }
+
+//function brCoreService($http, $rootScope, coreConfig) {
+//    return {
+//        get: get,
+//        set: set
+//    }
+
+//    function get() {
+//        $rootScope.$broadcast('systemIsLoading');
+
+//        var url = coreConfig.urlPath() + '/api/clients/' + coreConfig.getClient() + '/brCore/get';
+//        return $http.get(url)
+//          .success(function (data, status, headers) {
+//              $rootScope.$broadcast('systemIsLoaded');
+
+//              // console.log('configuration loaded');	    
+//          })
+//          .error(function (data, status, headers) {
+//              console.log('brCoreService failed to get');
+//              $rootScope.$broadcast('systemIsLoaded');
+
+//          });
+//    }
+
+//    function set(info) {
+//        $rootScope.$broadcast('systemIsLoading');
+
+//        var url = coreConfig.urlPath() + '/api/clients/' + coreConfig.getClient() + '/brCore/post';
+//        return $http.post(url, info)
+//          .success(function (data, status, headers) {
+//              $rootScope.$broadcast('systemIsLoaded');
+
+//              // console.log('configuration loaded');	    
+//          })
+//          .error(function (data, status, headers) {
+//              console.log('brCoreService failed to post');
+//              $rootScope.$broadcast('systemIsLoaded');
+
+//          });
+//    }
+//}

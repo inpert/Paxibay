@@ -14,6 +14,7 @@ var _ = require('underscore'),
 
 var routes = require('../app/routes.js');
 var employeeController = require("../app/controllers/employeeController.js");
+var projectData = require('../app/models/pbprojectFake');
 
 module.exports = function (db) {
     var app = express();
@@ -42,6 +43,25 @@ module.exports = function (db) {
             app.post(route.path, route.fn);
         }
     });
+
+    app.get('/api/project/', function (req, res) {
+        setTimeout(function () {
+            res.send(projectData);
+        }, 1000);
+    });
+
+    app.post('/api/project/:id', function (req, res) {
+        setTimeout(function () {
+            res.send(projectData);
+        }, 2000);
+    });
+
+    app.put('/api/project/:id', function (req, res) {
+        setTimeout(function () {
+            res.send(projectData);
+        }, 1000);
+    });
+
 
     app.set('view engine', 'vash');
     app.set('views', './app/views');

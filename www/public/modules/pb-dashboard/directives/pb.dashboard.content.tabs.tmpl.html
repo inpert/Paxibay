@@ -6,7 +6,8 @@
         <input type="text" id="product_name" ng-model="vm.activeProduct.name" placeholder='enter projectname'><br>
 
         <label for="scale">Scale</label>
-        <input type="text" id="scale" ng-model="vm.activeProduct.scale"><br>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale" ><br>
+        
 
         <label for="unit">
             Unit
@@ -21,29 +22,57 @@
         </label>
         <br />
         <label for="price">Price</label>
-        <input type="text" id="price" ng-model="vm.activeProduct.price"><br>
+        <input type="number" id="price" ng-model="vm.activeProduct.price"><br>
 
     </section>
 
+    <br />
+
+    <button class="btn btn-primary"
+            ng-click="vm.updateProject()">
+        Load Data
+    </button>
+    
+    <br />
+
+    <section class="">
+        <table st-table="displayCollection" st-safe-src="rowCollection" class="table">
+            <thead>
+                <tr>
+                    <th class="clickable">Year</th>
+                    <th class="clickable">Quantity</th>
+                    <th class="clickable">Price</th>
+                    <th class="clickable">Sum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in vm.project.scales">
+                    <td>{{row.year}}</td>
+                    <td>{{row.scale[1]}}</td>
+                    <td>{{row.price[1]}}</td>
+                    <td>{{row.scale[1] * row.price[1]}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="displayedPages"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
 </div>
-
-
-
 <!--<section>
     <h1 id="heading">Future Value Calculator</h1>
-
     <label for="investment">Investment Amount:</label>
     <input type="text" id="investment"><br>
-
     <label for="rate">Annual Interest Rate:</label>
     <input type="text" id="rate"><br>
-
     <label for="years">Number of Years:</label>
     <input type="text" id="years"><br>
-
     <label for="future_value">Future Value:</label>
     <input type="text" id="future_value" disabled="disabled"><br>
-
     <label>&nbsp;</label>
     <input type="button" id="calculate" value="Calculate"><br>
 </section>-->
