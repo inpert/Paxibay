@@ -1,10 +1,10 @@
 module.exports = {
-  directive: ['coreConfig', 'brPolicyService', brExistingPoliciesDirective],
-  directivePageSelect: [brExistingPoliciesPageSelect],
-  controller: ['$scope', 'brPolicyService', 'coreConfig', brExistingPoliciesController]
+    directive: ['pbDepreciationService', pbDepreciationContentDirective],
+  //directivePageSelect: [brExistingPoliciesPageSelect],
+    controller: ['$scope', 'pbDepreciationService', pbDepreciationContentController]
 };
 
-function brExistingPoliciesDirective(coreConfig, brPolicyService) {
+function pbDepreciationContentDirective(pbDepreciationService) {
 
   return {
     restrict: 'EA',
@@ -12,11 +12,11 @@ function brExistingPoliciesDirective(coreConfig, brPolicyService) {
     scope: {
       details: '='
     },
-    controller: 'brExistingPoliciesController as brPolicyDirectiveVm',
-    templateUrl: coreConfig.path() + '/modules/br-policy/directives/br.existingpolicy.table.tmpl.html',
+    controller: 'pbDepreciationContentController as vm',
+    templateUrl: '/modules/pb-depreciation/directives/pb.depreciation.content.tmpl.html',
     link: function(scope, element, attrs, vm) {
 
-      scope.paginationTemplateUrl = coreConfig.path() + '/modules/br-policy/directives/br.custom.pagination.tmpl.html';
+        //scope.paginationTemplateUrl = coreConfig.path() + '/modules/pb-depreciation/directives/pb.depreciation.content.tmpl.html';
 
     }
   };
@@ -35,7 +35,7 @@ function brExistingPoliciesPageSelect() {
     };
 }
 
-function brExistingPoliciesController($scope, brPolicyService, coreConfig) {
+function pbDepreciationContentController($scope, pbDepreciationService) {
     var vm = this;
 
     $scope.dateFormat = 'MMM d, y';

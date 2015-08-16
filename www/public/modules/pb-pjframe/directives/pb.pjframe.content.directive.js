@@ -1,9 +1,9 @@
 module.exports = {
-    directive: ['coreConfig', 'brPolicyService', brNewPoliciesDirective],
-    controller: ['$scope', 'brPolicyService', brNewPoliciesController]
+    directive: ['pbPjframeService', pbPjframeContentDirective],
+    controller: ['$scope', 'pbPjframeService', pbPjframeContentController]
 };
 
-function brNewPoliciesDirective(coreConfig, brPolicyService) {
+function pbPjframeContentDirective(pbPjframeService) {
 
     return {
         restrict: 'EA',
@@ -11,15 +11,15 @@ function brNewPoliciesDirective(coreConfig, brPolicyService) {
         scope: {
             details: '='
         },
-        controller: 'brNewPoliciesController',
-        templateUrl: coreConfig.path() + "/modules/br-policy/directives/br.newpolicy.table.tmpl.html",
+        controller: 'pbPjframeContentController as vm',
+        templateUrl: "/modules/pb-pjframe/directives/pb.pjframe.content.tmpl.html",
         link: function(scope, element, attrs, vm) {
 
         }
     };
 }
 
-function brNewPoliciesController($scope, brPolicyService) {
+function pbPjframeContentController($scope, pbPjframeService) {
     $scope.dateFormat = 'MMM d, y';
 
         $scope.rowCollection= [];

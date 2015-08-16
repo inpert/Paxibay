@@ -1,10 +1,10 @@
 module.exports = {
-  directive: ['coreConfig', 'brPolicyService', brExistingPoliciesDirective],
-  directivePageSelect: [brExistingPoliciesPageSelect],
-  controller: ['$scope', 'brPolicyService', 'coreConfig', brExistingPoliciesController]
+    directive: ['pbPjloansService', pbPjloansContentDirective],
+  //directivePageSelect: [brExistingPoliciesPageSelect],
+  controller: ['$scope', 'pbPjloansService', pbPjloansContentController]
 };
 
-function brExistingPoliciesDirective(coreConfig, brPolicyService) {
+function pbPjloansContentDirective(pbPjloansService) {
 
   return {
     restrict: 'EA',
@@ -12,30 +12,30 @@ function brExistingPoliciesDirective(coreConfig, brPolicyService) {
     scope: {
       details: '='
     },
-    controller: 'brExistingPoliciesController as brPolicyDirectiveVm',
-    templateUrl: coreConfig.path() + '/modules/br-policy/directives/br.existingpolicy.table.tmpl.html',
+    controller: 'pbPjloansContentController as vm',
+    templateUrl: '/modules/pb-pjloans/directives/pb.pjloans.content.tmpl.html',
     link: function(scope, element, attrs, vm) {
 
-      scope.paginationTemplateUrl = coreConfig.path() + '/modules/br-policy/directives/br.custom.pagination.tmpl.html';
+      //scope.paginationTemplateUrl = coreConfig.path() + '/modules/br-policy/directives/br.custom.pagination.tmpl.html';
 
     }
   };
 }
 
-function brExistingPoliciesPageSelect() {
-    return {
-        restrict: 'E',
-        template: '{{inputPage}}',
-        // template: '<input type="text" class="select-page" ng-model="inputPage" ng-change="selectPage(inputPage)">',
-        link: function (scope, element, attrs) {
-            scope.$watch('currentPage', function (c) {
-                scope.inputPage = c;
-            });
-        }
-    };
-}
+//function brExistingPoliciesPageSelect() {
+//    return {
+//        restrict: 'E',
+//        template: '{{inputPage}}',
+//        // template: '<input type="text" class="select-page" ng-model="inputPage" ng-change="selectPage(inputPage)">',
+//        link: function (scope, element, attrs) {
+//            scope.$watch('currentPage', function (c) {
+//                scope.inputPage = c;
+//            });
+//        }
+//    };
+//}
 
-function brExistingPoliciesController($scope, brPolicyService, coreConfig) {
+function pbPjloansContentController($scope, pbPjloansService) {
     var vm = this;
 
     $scope.dateFormat = 'MMM d, y';

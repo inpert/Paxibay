@@ -1,0 +1,63 @@
+<div class="panel panel-default policy-table">
+    <div class="panel-heading"><h4>{{title}}</h4></div>
+    
+    <section class="product-panel">
+        
+        <label for="scale">Scale</label>
+        <input type="radio" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="scale">Scale</label>
+        <input type="radio" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+    </section>
+
+    <hr />
+
+    <section class="product-panel">
+
+        <p>list box goes here</p>
+
+    </section>
+
+    <hr />
+
+    <section class="product-panel">
+
+        <label for="scale">Scale</label>
+        <input type="radio" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="scale">Scale</label>
+        <input type="radio" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label>
+            asdf
+            <input type="checkbox" name="input" ng-model="qty">
+        </label>
+        <br />
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        <label for="unit">
+            Unit
+            <select ng-model="vm.activeProduct.unit"
+                    ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        </label>
+
+        <label for="unit">
+            Unit
+            <select ng-model="vm.activeProduct.unit"
+                    ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        </label>
+
+    </section>
+
+</div>
