@@ -2,14 +2,15 @@
 
 module.exports = {
 	db: {
-		uri: 'mongodb://localhost/mean-dev',
+	    uri: 'mongodb://localhost/paxibay',
 		options: {
 			user: '',
 			pass: ''
-		}
+		},
+		sessionSecret: 'developmentSessionSecret'
 	},
 	log: {
-		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
+		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny' 
 		format: 'dev',
 		// Stream defaults to process.stdout
 		// Uncomment to enable logging to a log on the file system
