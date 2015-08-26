@@ -12,32 +12,24 @@
 //    }
 //}
 
-// paxi.valuator.settings.model
-// paxi.valuator.projects.model
-// paxi.valuator.taxing.model
-// paxi.valuator.costing.model
-// paxi.valuator.investing.model
-// paxi.valuator.lending.model
-// paxi.valuator.depreciation.model
 
-var mongoose = require('mongoose'),
-    settings = require('./paxi.valuator.settings.model'),
-    projects = require('./paxi.valuator.projects.model'),
-    taxing = require('./paxi.valuator.taxing.model'),
-    costing = require('./paxi.valuator.costing.model'),
-    investing = require('./paxi.valuator.investing.model'),
-    lending = require('./paxi.valuator.lending.model'),
-    depreciation = require('./paxi.valuator.depreciation.model');
-
+var mongoose    = require('mongoose'),
+    settings    = require('./paxi.valuator.dependancy.settings.model'),
+    projects    = require('./paxi.valuator.dependancy.projects.model'),
+    taxing      = require('./paxi.valuator.dependancy.taxing.model'),
+    costing     = require('./paxi.valuator.dependancy.costing.model'),
+    investing   = require('./paxi.valuator.dependancy.investing.model'),
+    lending     = require('./paxi.valuator.dependancy.lending.model'),
+    depreciation = require('./paxi.valuator.dependancy.depreciation.model');
 
 var metadata = {
-    settings: {},
-    projects: {},
-    taxing: {},
-    costing: {},
-    investing: {},
-    lending: {},
-    depreciation: {}
+    settings: settings,
+    projects: projects,
+    taxing: taxing,
+    costing: costing,
+    investing: investing,
+    lending: lending,
+    depreciation: depreciation
 };
 
 var valuatorSchema = mongoose.Schema({
@@ -46,5 +38,7 @@ var valuatorSchema = mongoose.Schema({
     metadata: metadata
 });
 
-var paxiValuator = mongoose.model('paxiValuator', valuatorSchema);
+mongoose.model('paxiValuator', valuatorSchema);
+//var paxiValuator = mongoose.model('paxiValuator', valuatorSchema);
+
 
