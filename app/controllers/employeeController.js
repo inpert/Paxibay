@@ -11,8 +11,10 @@
         var mongoose = require('mongoose');
 
         // Connect to empdb database, if not exists, mongodb will create. mongo mongodb://ds029187.mongolab.com:29187/paxibay
+
         //mongoose.connect('mongodb://localhost/empdb');
-        mongoose.connect('mongodb://paxiadmin:admin@ds029187.mongolab.com:29187/paxibay');
+        mongoose.connect('mongodb://localhost/paxibay');
+        //mongoose.connect('mongodb://paxiadmin:admin@ds029187.mongolab.com:29187/paxibay');
 
         // define connection
         var db = mongoose.connection;
@@ -25,6 +27,68 @@
         var empSchema = mongoose.Schema({ name: String });
         var Employee = mongoose.model('Employee', empSchema);
 
+        //==============================================
+        var metadata = {
+            settings: {},
+            projects: {},
+            taxing: {},
+            costing: {},
+            investing: {},
+            lending: {},
+            depreciation: {}
+        };
+
+        var valuatorSchema = mongoose.Schema({
+            valuator: String,
+            user_id: String,
+            metadata: metadata
+        });
+
+        var paxiValuator = mongoose.model('paxiValuator', valuatorSchema);
+        //============================================
+
+
+        application.get("/api/valuator", function (req, res) {
+            // Set response headers, content type to json
+            res.set("Content-Type", "application/json");
+            // Retrieve employees
+            paxiValuator.find(function (err, paxiValuators) {
+                if (err) return console.error(err);
+                // Send a json collection object back. 
+                res.send(paxiValuators);
+            });
+        });
+        // Handle POST request to create employee
+        application.post("/api/valuator", function (req, res) {
+            // Create an employee
+            // Get the employee name from the HTTP request body using req.body.empName
+
+            var paxivaluator = {
+                "valuator": "00000001",
+                "user_id": "000002",
+                "metadata": {
+                    "settings": { "period": 20},
+                    "projects": {},
+                    "taxing": {},
+                    "costing": {},
+                    "investing": {},
+                    "lending": {},
+                    "depreciation": {}
+                }
+            };
+            var valuator = new paxiValuator(paxivaluator);
+            valuator.save(function (err, valuator) {
+                if (err) return console.error(err);
+                console.log(valuator);
+            });
+            // Set response headers, content type to json
+            res.set("Content-Type", "application/json");
+            // Send the inserted employee name back to angular for databind to the collection employees.
+            res.send(paxivaluator);
+        });
+
+        //================================================
+        
         // Mongoose connection - End
 
         //Here we are doing the very same thing that we did in server.js 

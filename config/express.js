@@ -17,6 +17,12 @@ var employeeController = require("../app/controllers/employeeController.js");
 var projectData = require('../app/models/pbprojectFake');
 
 module.exports = function (db) {
+
+    //db.on('error', console.error);
+    //db.once('open', function callback() {
+    //    console.log('mongodb connection opened.');
+    //});
+
     var app = express();
 
     //// Setting application local variables
