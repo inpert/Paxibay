@@ -13,13 +13,13 @@
 //}
 
 
-var mongoose    = require('mongoose'),
-    settings    = require('./paxi.valuator.dependancy.settings.model'),
-    projects    = require('./paxi.valuator.dependancy.projects.model'),
-    taxing      = require('./paxi.valuator.dependancy.taxing.model'),
-    costing     = require('./paxi.valuator.dependancy.costing.model'),
-    investing   = require('./paxi.valuator.dependancy.investing.model'),
-    lending     = require('./paxi.valuator.dependancy.lending.model'),
+var mongoose = require('mongoose'),
+    settings = require('./paxi.valuator.dependancy.settings.model'),
+    projects = require('./paxi.valuator.dependancy.projects.model'),
+    taxing = require('./paxi.valuator.dependancy.taxing.model'),
+    costing = require('./paxi.valuator.dependancy.costing.model')
+    investing = require('./paxi.valuator.dependancy.investing.model'),
+    lending = require('./paxi.valuator.dependancy.lending.model'),
     depreciation = require('./paxi.valuator.dependancy.depreciation.model');
 
 var metadata = {
@@ -32,13 +32,12 @@ var metadata = {
     depreciation: depreciation
 };
 
-var valuatorSchema = mongoose.Schema({
-    valuator: String,
+var ValuatorSchema = mongoose.Schema({
     user_id: String,
     metadata: metadata
 });
 
-mongoose.model('paxiValuator', valuatorSchema);
-//var paxiValuator = mongoose.model('paxiValuator', valuatorSchema);
+mongoose.model('Valuator', ValuatorSchema);
+//var paxiValuator = mongoose.model('paxiValuator', valuatorSchema); UserSchema
 
 

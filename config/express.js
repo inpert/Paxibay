@@ -71,9 +71,15 @@ module.exports = function (db) {
 
     app.set('view engine', 'vash');
     app.set('views', './app/views');
+
+
+    // Load the routing files
+    require('../app/routes/paxi.valuator.routes.js')(app);
+
+
     app.use(express.static(path.resolve('./www/public')));
 
-    employeeController.init(app);
+    //employeeController.init(app);
     
     return app;
 };

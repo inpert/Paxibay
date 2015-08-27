@@ -9,10 +9,17 @@ var config = require('./config'),
 // Define the Mongoose configuration method
 module.exports = function () {
     // Use Mongoose to connect to MongoDB
-    var db = mongoose.connect(config.db);
+    var db = mongoose.connect(config.db.uri);
+
+    // define connection
+    var db = mongoose.connection;
+    db.on('error', console.error);
+    db.once('open', function callback() {
+        console.log('mongodb connection opened.sssss');
+    });
 
     // Load the 'User' model 
-    //require('../app/models/user.server.model');
+    require('../app/models/paxi.valuator.model');
 
     // Return the Mongoose connection instance
     return db;
