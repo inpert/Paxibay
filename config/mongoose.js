@@ -19,7 +19,8 @@ module.exports = function () {
     });
 
     // Load the 'User' model 
-    require('../app/models/paxi.valuator.model');
+    //require('../app/models/paxi.valuator.model');
+    require('../app/entities/paxi.valuator.model');
 
     // Return the Mongoose connection instance
     return db;

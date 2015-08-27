@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = {
-	db: {
-	    uri: 'mongodb://localhost/paxibay',
+    db: {
+        uri: 'mongodb://localhost/paxibay',
+	    //uri: 'mongodb://paxiadmin:admin@ds029187.mongolab.com:29187/paxibay',
 		options: {
 			user: '',
 			pass: ''

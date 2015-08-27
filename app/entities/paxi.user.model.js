@@ -13,7 +13,7 @@ var UserSchema = new Schema({
         type: String,
         // Set an email index
         index: true,
-        // Validate the email format
+        // Validate the email format 
         match: /.+\@.+\..+/
     },
     username: {
