@@ -1,12 +1,12 @@
 ﻿
 var mongoose = require('mongoose'),
-    settings    = require('./paxi.valuator.dependancy.settings.model'),
-    projects    = require('./paxi.valuator.dependancy.projects.model'),
-    taxing      = require('./paxi.valuator.dependancy.taxing.model'),
-    costing     = require('./paxi.valuator.dependancy.costing.model')
-    investing   = require('./paxi.valuator.dependancy.investing.model'),
-    lending     = require('./paxi.valuator.dependancy.lending.model'),
-    depreciation = require('./paxi.valuator.dependancy.depreciation.model');
+    settings = require('./dependancy/paxi.valuator.dependancy.settings.model'),
+    projects = require('./dependancy/paxi.valuator.dependancy.projects.model'),
+    taxing = require('./dependancy/paxi.valuator.dependancy.taxing.model'),
+    costing = require('./dependancy/paxi.valuator.dependancy.costing.model')
+    investing = require('./dependancy/paxi.valuator.dependancy.investing.model'),
+    lending = require('./dependancy/paxi.valuator.dependancy.lending.model'),
+    depreciation = require('./dependancy/paxi.valuator.dependancy.depreciation.model');
 
 var metadata = {
     settings: settings,
