@@ -1,6 +1,6 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var mongoose = require('./config/mongoose');
-var db = mongoose();    // Create a new Mongoose connection instance
+var db = mongoose();   
 
 var app = require('./config/express')(null);
 
