@@ -8,11 +8,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
 
     return {
         getProducts: getProducts,
-        getMetaData: getMetaData,
-        updateProduct: updateProduct,
         get: get,
-        //set: set,
-        //setValuators: setValuators,
         getValuator: getValuator
     };
   
@@ -37,36 +33,9 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
 
         return deferred.promise;
     }
-   
-
-    //function set(info) {
-
-    //    var url = '/api/project/AC1231ABB';
-    //    info[0].name = info[0].name + " asdf";
-
-    //    return $http.post(url, info)
-    //      .success(function (data, status, headers) {
-    //          console.log('configuration UPDATE');
-    //          console.log(data);
-    //      })
-    //      .error(function (data, status, headers) {
-    //          console.log('brCoreService failed to post');
-    //          console.log(status);
-    //      });
-    //}
-
-
-    function getMetaData() {
-        return _metaData;
-    }
 
     function getProducts() {
                
         return resource.query().$promise;
     }
-
-    function updateProduct (product) {
-        product.$save();
-    }
-
 }
