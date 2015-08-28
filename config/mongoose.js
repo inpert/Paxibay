@@ -18,8 +18,9 @@ module.exports = function () {
         console.log('mongodb connection opened.sssss');
     });
 
-    // Load the 'User' model 
-    //require('../app/models/paxi.valuator.model');
+    // Load the models
+    //require('../app/entities/paxi.user.model');
+    //require('../app/entities/paxi.identiy.model');
     require('../app/entities/paxi.valuator.model');
 
     // Return the Mongoose connection instance

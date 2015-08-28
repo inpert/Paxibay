@@ -1,5 +1,4 @@
-﻿// Invoke 'strict' JavaScript mode
-//'use strict';
+﻿'use strict';
 
 var Valuator = require('mongoose').model('Valuator');
 

@@ -1,14 +1,13 @@
-﻿// Invoke 'strict' JavaScript mode
-//'use strict';
+﻿'use strict';
 
-// Load the 'users' controller
-var valuators = require('../../app/controllers/paxi.valuator.controller');
+// Load the 'valuator' controller
+var valuator = require('../../app/controllers/paxi.valuator.controller');
 
 // Define the routes module' method
 module.exports = function (app) {
     // Set up the 'users' base routes 
     app.route('/api/valuators')
-        .post(valuators.createValuator);
+        .post(valuator.createValuator);
 
     //// Set up the 'users' parameterized routes
     //app.route('/users/:userId')
