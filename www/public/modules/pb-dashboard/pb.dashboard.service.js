@@ -11,7 +11,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         getMetaData: getMetaData,
         updateProduct: updateProduct,
         get: get,
-        set: set,
+        //set: set,
         //setValuators: setValuators,
         getValuator: getValuator
     };
@@ -39,21 +39,21 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
     }
    
 
-    function set(info) {
+    //function set(info) {
 
-        var url = '/api/project/AC1231ABB';
-        info[0].name = info[0].name + " asdf";
+    //    var url = '/api/project/AC1231ABB';
+    //    info[0].name = info[0].name + " asdf";
 
-        return $http.post(url, info)
-          .success(function (data, status, headers) {
-              console.log('configuration UPDATE');
-              console.log(data);
-          })
-          .error(function (data, status, headers) {
-              console.log('brCoreService failed to post');
-              console.log(status);
-          });
-    }
+    //    return $http.post(url, info)
+    //      .success(function (data, status, headers) {
+    //          console.log('configuration UPDATE');
+    //          console.log(data);
+    //      })
+    //      .error(function (data, status, headers) {
+    //          console.log('brCoreService failed to post');
+    //          console.log(status);
+    //      });
+    //}
 
 
     function getMetaData() {
@@ -62,7 +62,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
 
     function getProducts() {
                
-        return resource.query();
+        return resource.query().$promise;
     }
 
     function updateProduct (product) {
