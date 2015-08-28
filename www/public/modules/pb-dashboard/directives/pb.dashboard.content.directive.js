@@ -25,12 +25,18 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     var vm = this;
 
     // attributes
-    vm.titile = 'this vm directive titleaa';
-    vm.productCount = 'Product Quantity:';
+    vm.titile = 'this vm directive title';
+    vm.projectCount = 'Project Count:';
+    vm.count = 0;
+
     vm.qtyInitial = 0;
     $scope.qty = 0;
     vm.project = {};
     vm.activeProduct = {};
+    vm.tabs = [];
+
+    vm.valuatorPromise = null;
+    vm.valuatorInstance = {};
 
     //vm.cacheId = 'memberController';
     //vm.dontRunUntilFinishedLoadingCache = true;
@@ -49,7 +55,6 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     //vm.selectPlanAdminUrl = coreConfig.path() + '/modules/member/search/member.select.plan.admin.tmpl.html';
 
     // methods and events
-    vm.currentValuator = {};
 
     //vm.advancedSearch = advancedSearch;
     //vm.clearAdvancedSearch = clearAdvancedSearch;
@@ -59,9 +64,28 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     //vm.proceedWithoutAMember = proceedWithoutAMember;
     //vm.proceedWithTheProcess = proceedWithTheProcess;
     //vm.onMemberSelectionChange = onMemberSelectionChange;
-    vm.valuatorPromise = null;
 
-    $scope.$on('refreshController', init);
+
+    $scope.$watch(onCountChange, adjustProjectTags);
+
+    function adjustProjectTags(count) {
+        vm.tabs = [];
+        for (var i = 0; i < count; i++) {
+            vm.tabs.push({
+                code: vm.project.products[i].code,
+                title: vm.project.products[i].title,
+                content: vm.project.content_link
+            });
+        }
+    }
+
+    function onCountChange() {
+        return vm.count;
+    }
+
+
+
+    //$scope.$on('refreshController', init);
 
     init();
 
@@ -73,7 +97,7 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     function getValuator() {
         vm.valuatorPromise.then(
             function (data) {
-                vm.currentValuator = data;
+                vm.valuatorInstance = data;
                 console.log('Success!', data);
             }, function (error) {
                 console.log('Failure...', error);
@@ -83,7 +107,6 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     //=============================================
 
 
-    vm.tabs = [];
     $scope.$watch('qty', function (qty) {
         vm.tabs = [];
         for (var i = 0; i < qty; i++) {
@@ -154,31 +177,3 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
         pbDashboardService.set(vm.projects);
     };
 }
-
-
-
-
-//var app = angular.module('myApp', []);
-
-///* $http ajax calls really belongs in a service, 
-//but I'll be using them inside the controller for this demo */
-
-//app.controller('myCtrl', function ($scope, $http) {
-//    /*$http.get('path/to/json').then(function(data) {
-//      $scope.languages = data;
-//    });*/
-//    //inputting json directly for this example
-//    $scope.languages = [
-//      { name: "English", value: 0 },
-//      { name: "Spanish", value: 1 },
-//      { name: "German", value: 3 },
-//      { name: "Russian", value: 2 },
-//      { name: "Korean", value: 1 }
-//    ];
-//    $scope.save = function () {
-//        /*$http.post('path/to/server/file/to/save/json', $scope.languages).then(function(data) {
-//          $scope.msg = 'Data saved';
-//        });*/
-//        $scope.msg = 'Data sent: ' + JSON.stringify($scope.languages);
-//    };
-//});
