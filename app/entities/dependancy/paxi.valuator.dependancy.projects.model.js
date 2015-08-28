@@ -11,7 +11,7 @@
         startYear: String,
         initial: Boolean
     },
-    projects: [ 
+    defination: [ 
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },

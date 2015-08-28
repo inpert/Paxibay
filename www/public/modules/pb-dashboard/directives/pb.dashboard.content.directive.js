@@ -21,15 +21,67 @@ function pbDashboardContentDirective(pbDashboardService) {
 
 // Directive Controller
 function pbDashboardContentController($scope, $http, $location, pbDashboardService) {
- 
+    //$rootScope.$broadcast('scrollTop');
     var vm = this;
+
+    // attributes
     vm.titile = 'this vm directive titleaa';
     vm.productCount = 'Product Quantity:';
     vm.qtyInitial = 0;
     $scope.qty = 0;
     vm.project = {};
     vm.activeProduct = {};
-    
+
+    //vm.cacheId = 'memberController';
+    //vm.dontRunUntilFinishedLoadingCache = true;
+    //vm.expectingMemberToMatch = expectingMemberToMatch;
+    //vm.isSearching = 0;
+    //vm.focusOn = 'mainSearch';
+    //vm.member = [];
+    //vm.groupType = 0;
+    //vm.returnToSearch = returnToSearch;
+    //vm.selectedMember = {};
+    //vm.title = 'Search Member';
+
+    // urls for ng-include
+    //vm.fastSearchResultUrl = coreConfig.path() + '/modules/member/search/member.search.fastsearch.result.tmpl.html';
+    //vm.matchMemberUrl = coreConfig.path() + '/modules/member/member.match.tmpl.html';
+    //vm.selectPlanAdminUrl = coreConfig.path() + '/modules/member/search/member.select.plan.admin.tmpl.html';
+
+    // methods and events
+    vm.currentValuator = {};
+
+    //vm.advancedSearch = advancedSearch;
+    //vm.clearAdvancedSearch = clearAdvancedSearch;
+    //vm.clearErrorMessage = clearErrorMessage;
+    //vm.clearSearch = clearSearch;
+    //vm.createLeadFromMember = createLeadFromMember;
+    //vm.proceedWithoutAMember = proceedWithoutAMember;
+    //vm.proceedWithTheProcess = proceedWithTheProcess;
+    //vm.onMemberSelectionChange = onMemberSelectionChange;
+    vm.valuatorPromise = null;
+
+    $scope.$on('refreshController', init);
+
+    init();
+
+    function init() {
+        vm.valuatorPromise = pbDashboardService.getValuator();
+        getValuator();
+    }
+
+    function getValuator() {
+        vm.valuatorPromise.then(
+            function (data) {
+                vm.currentValuator = data;
+                console.log('Success!', data);
+            }, function (error) {
+                console.log('Failure...', error);
+            }
+        );
+    }
+    //=============================================
+
 
     vm.tabs = [];
     $scope.$watch('qty', function (qty) {
@@ -92,20 +144,14 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
         }
     });
 
+
+
     pbDashboardService.get().then(function (data) {
         vm.projects = data;
     });
 
     vm.updateProject = function () {
         pbDashboardService.set(vm.projects);
-    };
-
-    vm.createEmplyee = function () {
-        //$scope.newEmployee = { empName: "" };
-        //var emplyee = { empName: "newEmployee" }
-        //pbDashboardService.setEmployees(emplyee);
-
-        pbDashboardService.setValuators();
     };
 }
 

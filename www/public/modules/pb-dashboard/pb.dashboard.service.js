@@ -12,7 +12,8 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         updateProduct: updateProduct,
         get: get,
         set: set,
-        setValuators: setValuators
+        //setValuators: setValuators,
+        getValuator: getValuator
     };
   
     function get() {
@@ -28,14 +29,15 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
           });
     }
 
-    function setValuators() {
+    function getValuator() {
+        var deferred = $q.defer();
         var url = '/api/valuator';
         $http.post(url, null)
-          .then(function (result) {
-              // Push the added employee to the collection of employees.
-              console.log(result);
-          });
+          .then(deferred.resolve, deferred.reject);
+
+        return deferred.promise;
     }
+   
 
     function set(info) {
 

@@ -18,8 +18,16 @@ var metadata = {
     depreciation: depreciation
 };
 
-var ValuatorSchema = mongoose.Schema({
-    user_id: String,
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
+var ValuatorSchema = Schema({
+    user_id: {
+        type: Number,
+        ref: 'users',
+        index: true,
+        default: '100000'
+    },
     metadata: metadata
 });
 

@@ -4,23 +4,10 @@ var Valuator = require('mongoose').model('Valuator');
 
 // Create a new 'create' controller method
 exports.create = function (req, res) {
-    // Create a new instance of the 'User' Mongoose model
-    var newValuator = {
-        "user_id": "000002",
-        "metadata": {
-            "settings": { "period": 40 },
-            "projects": {},
-            "taxing": {},
-            "costing": {},
-            "investing": {},
-            "lending": {},
-            "depreciation": {}
-        }
-    };
+    // Create a new instance of the 'Valuator' Mongoose model
+    var valuator = new Valuator();
 
-    var valuator = new Valuator(newValuator);
-
-    // Use the 'User' instance's 'save' method to save a new user document 
+    // Use the 'Valuator' instance's 'save' method to save a new valuator document 
     valuator.save(function (err, valuator) {
         if (err) {
             // Call the next middleware with an error message
@@ -32,6 +19,9 @@ exports.create = function (req, res) {
             res.json(valuator);
         }
     });
+
+
+    
 
 
     //var valuator = {
@@ -60,6 +50,13 @@ exports.create = function (req, res) {
 
 
 };
+
+// Create a new 'read' controller method
+exports.read = function (req, res) {
+    // Use the 'response' object to send a JSON response
+    res.json(req.user);
+};
+
 
 
 ////================================================
