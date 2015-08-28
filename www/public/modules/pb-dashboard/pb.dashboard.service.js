@@ -13,7 +13,6 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         updateProduct: updateProduct,
         get: get,
         set: set,
-        getEmployees: getEmployees,
         setEmployees: setEmployees,
         setValuators: setValuators
     };
@@ -24,11 +23,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         return $resource('/api/project').query().$promise;
     }
 
-    function getEmployees() {
-
-        return $resource('/api/employee').query().$promise;
-    }
-
+   
 
     //$http.get("/api/employee")
     //             .then(function (result) {
@@ -69,7 +64,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
     }
 
     function setValuators() {
-        var url = '/api/valuators';
+        var url = '/api/valuator';
         $http.post(url, null)
           .then(function (result) {
               // Push the added employee to the collection of employees.

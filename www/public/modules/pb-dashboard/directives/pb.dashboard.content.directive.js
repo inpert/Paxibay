@@ -100,11 +100,6 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
         pbDashboardService.set(vm.projects);
     };
 
-    //========================================================
-    pbDashboardService.getEmployees().then(function (data) {
-        vm.employees = data;
-    });
-
     vm.createEmplyee = function () {
         //$scope.newEmployee = { empName: "" };
         //var emplyee = { empName: "newEmployee" }
