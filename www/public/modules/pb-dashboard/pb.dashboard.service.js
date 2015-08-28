@@ -12,12 +12,74 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         getMetaData: getMetaData,
         updateProduct: updateProduct,
         get: get,
-        set: set
+        set: set,
+        getEmployees: getEmployees,
+        setEmployees: setEmployees,
+        setValuators: setValuators
     };
   
     function get() {
+
+        // /api/employee  
         return $resource('/api/project').query().$promise;
     }
+
+    function getEmployees() {
+
+        return $resource('/api/employee').query().$promise;
+    }
+
+
+    //$http.get("/api/employee")
+    //             .then(function (result) {
+    //                 $scope.employees = result.data;
+    //             },
+    //             function (error) {
+    //                 // Do something with the error
+    //                 alert("error");
+    //             });
+    //// Call REST api to create employee
+    //// $scope.newEmployee is the model object, this model object contains properties
+    //// attributed with ng-model in the view elements.
+    //// In our case, we have 1 property newEmployee.empName in the model properties collection.
+    //$scope.create = function () {
+    //    $http.post("/api/employee", $scope.newEmployee)
+    //         .then(function (result) {
+    //             // Push the added employee to the collection of employees.
+    //             $scope.employees.push(result.data);
+    //         });
+    //};
+
+    function setEmployees(Employee) {
+        var url = '/api/employee';
+        $http.post(url, Employee)
+          .then(function (result) {
+              // Push the added employee to the collection of employees.
+              console.log(result);
+          });
+    }
+
+    function setValuators_() {
+        var url = '/api/valuator';
+        $http.post(url, null)
+          .then(function (result) {
+              // Push the added employee to the collection of employees.
+              console.log(result);
+          });
+    }
+
+    function setValuators() {
+        var url = '/api/valuators';
+        $http.post(url, null)
+          .then(function (result) {
+              // Push the added employee to the collection of employees.
+              console.log(result);
+          });
+    }
+
+
+    //application.post("/api/valuator", function (req, res) {
+
 
     function set(info) {
 

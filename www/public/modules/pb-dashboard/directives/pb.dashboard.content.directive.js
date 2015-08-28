@@ -99,6 +99,19 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     vm.updateProject = function () {
         pbDashboardService.set(vm.projects);
     };
+
+    //========================================================
+    pbDashboardService.getEmployees().then(function (data) {
+        vm.employees = data;
+    });
+
+    vm.createEmplyee = function () {
+        //$scope.newEmployee = { empName: "" };
+        //var emplyee = { empName: "newEmployee" }
+        //pbDashboardService.setEmployees(emplyee);
+
+        pbDashboardService.setValuators();
+    };
 }
 
 
