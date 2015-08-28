@@ -3,7 +3,7 @@
 var Valuator = require('mongoose').model('Valuator');
 
 // Create a new 'create' controller method
-exports.createValuator = function (req, res) {
+exports.create = function (req, res) {
     // Create a new instance of the 'User' Mongoose model
     var newValuator = {
         "user_id": "000002",

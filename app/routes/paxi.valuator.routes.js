@@ -7,7 +7,7 @@ var valuator = require('../../app/controllers/paxi.valuator.controller');
 module.exports = function (app) {
     // Set up the 'users' base routes 
     app.route('/api/valuator')
-        .post(valuator.createValuator);
+        .post(valuator.create);
 
     //// Set up the 'users' parameterized routes
     //app.route('/users/:userId')

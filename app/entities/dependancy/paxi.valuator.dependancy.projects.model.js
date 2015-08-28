@@ -1,7 +1,13 @@
 ﻿module.exports = {
     settings: {
-        projectsAmount: Number,
-        period: Number,
+        count: {
+            type: Number,
+            default: 1
+        },
+        period: {
+            type: Number,
+            default: 20
+        },
         startYear: String,
         initial: Boolean
     },
