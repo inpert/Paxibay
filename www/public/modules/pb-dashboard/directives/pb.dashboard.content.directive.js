@@ -63,11 +63,28 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     function init() {
         //vm.valuatorPromise = pbDashboardService.createValuator();
         //createValuator();
-        //getProducts();
+        getProducts();
 
         vm.valuatorPromise = pbDashboardService.getValuators();
         //pbDashboardService.deleteValuator();
-        getProducts();
+        //getProducts();
+
+        vm.valuatorPromise.then(
+            function (result) {
+                vm.valuatorInstance = result;
+                angular.forEach(vm.valuatorInstance, function (todo) {
+                    if (todo._id == '55e11baf2b0eed8027e33f02') {
+                        todo.metadata.projects.settings.count = 1;
+                        todo.metadata.projects.settings.period = 30;
+                        pbDashboardService.updateValuator(todo);
+                    }
+                });
+                
+                console.log('Success!', result);
+            }, function (error) {
+                console.log('Failure...', error);
+            }
+        );
     }
 
     //============================================= 
@@ -101,19 +118,21 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     }
 
     function updateProject() {
-        //pbDashboardService.updateProject(vm.valuatorInstance);
+        pbDashboardService.updateValuator(vm.valuatorInstance);
 
-        vm.valuatorPromise.then(
-            function (result) {
-                vm.valuatorInstance = result;
+        //vm.valuatorPromise.then(
+        //    function (result) {
+        //        vm.valuatorInstance = result;
 
-                vm.count = result.data.metadata.projects.settings.count;
+        //        vm.count = result.data.metadata.projects.settings.count;
 
-                console.log('Success!', result);
-            }, function (error) {
-                console.log('Failure...', error);
-            }
-        );
+        //        vm.valuatorInstance.data.metadata.projects.settings.count;
+
+        //        console.log('Success!', result);
+        //    }, function (error) {
+        //        console.log('Failure...', error);
+        //    }
+        //);
     }
 
 

@@ -17,7 +17,8 @@ module.exports = function (app) {
     // Set up the 'users' parameterized routes
     app.route('/api/valuators/:id')
         .get(valuators.read)
-        .put(valuators.update);
+        .put(valuators.update)
+        .delete(valuators.delete);
 
     // Set up the 'userId' parameter middleware
     app.param('id', valuators.valuatorByID);

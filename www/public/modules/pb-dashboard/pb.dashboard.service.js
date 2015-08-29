@@ -20,11 +20,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         return $resource('/api/project').query().$promise;
     }
 
-    function getValuators() {
-        //var baseUrl = '/valuators/';
-        //var values = $resource(baseUrl + ":id", { id: "@_id" });
-        //return values.query().$promise;
-
+    function getValuators_() {
         var baseUrl = '/api/valuators';
         $http({
             url: baseUrl,
@@ -34,6 +30,22 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         });
 
     }
+
+    function ssdeleteValuator(valuator) {
+        if (valuator._id == '55e11ba32b0eed8027e33f01') {
+            var str = null;
+            valuator.$delete().then(function () {
+                console.log('delete success');
+            });
+        }
+    }
+
+    function getValuators () {
+        var productsResource = $resource('/api/valuators');
+        var resource = productsResource.query().$promise;
+        return resource;
+    }
+
 
     function createValuator() {
         var deferred = $q.defer();
@@ -47,17 +59,28 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
     function getValuator() {
         var baseUrl = '/api/valuators/';
         $http({
-            url: baseUrl + '55e10a95ce3c4ef4405c1225',
+            url: baseUrl + '55e11ba32b0eed8027e33f01',
             method: "GET"
         }).success(function (modifiedProject) {
             console.log(modifiedProject);
         });
     }
 
+    //function updateValuator(valuator) {
+    //    var baseUrl = '/api/valuators/';
+    //    $http({
+    //        url: baseUrl + '55e11ba32b0eed8027e33f01',
+    //        method: "PUT",
+    //        data: valuator
+    //    }).success(function (modifiedProject) {
+    //        console.log(modifiedProject);
+    //    });
+    //}
+
     function updateValuator(valuator) {
         var baseUrl = '/api/valuators/';
         $http({
-            url: baseUrl + '55e10a95ce3c4ef4405c1225',
+            url: baseUrl + valuator._id,
             method: "PUT",
             data: valuator
         }).success(function (modifiedProject) {
@@ -65,13 +88,13 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         });
     }
 
-    function deleteValuator() {
+    function deleteValuator(valuator) {
         var baseUrl = '/api/valuators/';
         $http({
-            url: baseUrl + '55e110b0d12ecbcc21c0a5db',
-            method: "PUT"
-        }).success(function (modifiedProject) {
-            console.log(modifiedProject);
+            url: baseUrl + valuator._id,
+            method: "DELETE"
+        }).success(function () {
+            console.log('delete success');
         });
     }
 
@@ -80,3 +103,8 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         return resource.query().$promise;
     }
 }
+
+// 55e11b262b0eed8027e33f00
+// 55e11ba32b0eed8027e33f01
+//
+//
