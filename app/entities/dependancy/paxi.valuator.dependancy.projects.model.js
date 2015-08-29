@@ -2,7 +2,7 @@
     settings: {
         count: {
             type: Number,
-            default: 1
+            default: 4
         },
         period: {
             type: Number,
@@ -11,7 +11,7 @@
         startYear: String,
         initial: Boolean
     },
-    defination: [ 
+    projects: [ 
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },
         { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },

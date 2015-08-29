@@ -1,20 +1,24 @@
 ﻿'use strict';
 
 // Load the 'valuator' controller
-var valuator = require('../../app/controllers/paxi.valuator.controller');
+var valuators = require('../../app/controllers/paxi.valuator.controller');
 
 // Define the routes module' method
 module.exports = function (app) {
     // Set up the 'users' base routes 
-    app.route('/api/valuator')
-        .post(valuator.create);
+    //app.route('/api/valuator')
+    //    .post(valuators.create)
+    //    .get(valuators.list);
 
-    //// Set up the 'users' parameterized routes
-    //app.route('/users/:userId')
-	//   .get(users.read)
-	//   .put(users.update)
-	//   .delete(users.delete);
+    app.route('/api/valuators')
+        .post(valuators.create)
+        .get(valuators.list);
 
-    //// Set up the 'userId' parameter middleware
-    //app.param('userId', users.userByID);
+    // Set up the 'users' parameterized routes
+    app.route('/api/valuators/:id')
+        .get(valuators.read)
+        .put(valuators.update);
+
+    // Set up the 'userId' parameter middleware
+    app.param('id', valuators.valuatorByID);
 };

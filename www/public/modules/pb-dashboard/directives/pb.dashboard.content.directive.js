@@ -40,12 +40,15 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
 
     
 
+
     // urls for ng-include
     
 
     // methods and events
     vm.activateTab = activateTab;
     vm.getProjects = getProjects;
+    vm.updateProject = updateProject;
+
 
     $scope.$watch(onCountChange, adjustProjectTags);
     $scope.$watch('onScaleChange', scaleChangeHandler);
@@ -58,23 +61,63 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     init();
 
     function init() {
-        vm.valuatorPromise = pbDashboardService.getValuator();
-        getValuator();
+        //vm.valuatorPromise = pbDashboardService.createValuator();
+        //createValuator();
+        //getProducts();
+
+        vm.valuatorPromise = pbDashboardService.getValuators();
+        //pbDashboardService.deleteValuator();
         getProducts();
     }
 
-    //=============================================
+    //============================================= 
 
-    function getValuator() {
+    function createValuator() {
         vm.valuatorPromise.then(
-            function (data) {
-                vm.valuatorInstance = data;
-                console.log('Success!', data);
+            function (result) {
+                vm.valuatorInstance = result;
+
+                vm.count = result.data.metadata.projects.settings.count;
+
+                result.data.metadata.projects.settings.count = 1;
+
+                console.log('Success!', result);
             }, function (error) {
                 console.log('Failure...', error);
             }
         );
     }
+
+    function getValuator() {
+        vm.valuatorPromise.then(
+            function (result) {
+                vm.valuatorInstance = result;
+
+                console.log('Success!', result);
+            }, function (error) {
+                console.log('Failure...', error);
+            }
+        );
+    }
+
+    function updateProject() {
+        //pbDashboardService.updateProject(vm.valuatorInstance);
+
+        vm.valuatorPromise.then(
+            function (result) {
+                vm.valuatorInstance = result;
+
+                vm.count = result.data.metadata.projects.settings.count;
+
+                console.log('Success!', result);
+            }, function (error) {
+                console.log('Failure...', error);
+            }
+        );
+    }
+
+
+
 
     function activateTab(code) {
         vm.activeProduct = vm.project.products.filter(function (tab) {
@@ -169,4 +212,6 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
             vm.projects = data;
         });
     }
+
+    
 }
