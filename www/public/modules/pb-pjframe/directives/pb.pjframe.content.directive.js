@@ -1,6 +1,6 @@
 module.exports = {
     directive: ['pbPjframeService', pbPjframeContentDirective],
-    controller: ['$scope', 'pbPjframeService', pbPjframeContentController]
+    controller: ['$scope', '$rootScope', 'pbPjframeService', pbPjframeContentController]
 };
 
 function pbPjframeContentDirective(pbPjframeService) {
@@ -19,12 +19,20 @@ function pbPjframeContentDirective(pbPjframeService) {
     };
 }
 
-function pbPjframeContentController($scope, pbPjframeService) {
+function pbPjframeContentController($scope, $rootScope, pbPjframeService) {
     $scope.dateFormat = 'MMM d, y';
 
         $scope.rowCollection= [];
      $scope.displayCollection = [];
-     $scope.itemsByPage= 10;
+     $scope.itemsByPage = 10;
+
+     init();
+
+     function init() {
+         var str = $rootScope.currentValuator;
+         console.log('here is pjframe');
+         console.log(str);
+     }
 
     $scope.$watch("details", function(data){
 

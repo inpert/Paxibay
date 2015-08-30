@@ -1,6 +1,6 @@
 module.exports = {
     directive: ['pbDashboardService', pbDashboardContentDirective],
-    controller: ['$scope', '$http', '$location', 'pbDashboardService', pbDashboardContentController]
+    controller: ['$scope', '$rootScope', '$http', '$location', 'pbDashboardService', pbDashboardContentController]
 };
 
 function pbDashboardContentDirective(pbDashboardService) {
@@ -20,7 +20,7 @@ function pbDashboardContentDirective(pbDashboardService) {
 }
 
 // Directive Controller
-function pbDashboardContentController($scope, $http, $location, pbDashboardService) {
+function pbDashboardContentController($scope, $rootScope, $http, $location, pbDashboardService) {
     //$rootScope.$broadcast('scrollTop');
     var vm = this;
 
@@ -38,11 +38,9 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
     vm.valuatorPromise = null;
     vm.valuatorInstance = {};
 
-    
-
 
     // urls for ng-include
-    
+
 
     // methods and events
     vm.activateTab = activateTab;
@@ -65,26 +63,26 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
         //createValuator();
         getProducts();
 
-        vm.valuatorPromise = pbDashboardService.getValuators();
+        //vm.valuatorPromise = pbDashboardService.getValuators();
         //pbDashboardService.deleteValuator();
         //getProducts();
 
-        vm.valuatorPromise.then(
-            function (result) {
-                vm.valuatorInstance = result;
-                angular.forEach(vm.valuatorInstance, function (todo) {
-                    if (todo._id == '55e11baf2b0eed8027e33f02') {
-                        todo.metadata.projects.settings.count = 1;
-                        todo.metadata.projects.settings.period = 30;
-                        pbDashboardService.updateValuator(todo);
-                    }
-                });
+        //vm.valuatorPromise.then(
+        //    function (result) {
+        //        vm.valuatorInstance = result;
+        //        angular.forEach(vm.valuatorInstance, function (todo) {
+        //            if (todo._id == '55e11b262b0eed8027e33f00') {
+        //                todo.metadata.projects.settings.count = 1;
+        //                todo.metadata.projects.settings.period = 30;
+        //                //pbDashboardService.updateValuator(todo);
+        //            }
+        //        });
                 
-                console.log('Success!', result);
-            }, function (error) {
-                console.log('Failure...', error);
-            }
-        );
+        //        console.log('Success!', result);
+        //    }, function (error) {
+        //        console.log('Failure...', error);
+        //    }
+        //);
     }
 
     //============================================= 
@@ -119,24 +117,7 @@ function pbDashboardContentController($scope, $http, $location, pbDashboardServi
 
     function updateProject() {
         pbDashboardService.updateValuator(vm.valuatorInstance);
-
-        //vm.valuatorPromise.then(
-        //    function (result) {
-        //        vm.valuatorInstance = result;
-
-        //        vm.count = result.data.metadata.projects.settings.count;
-
-        //        vm.valuatorInstance.data.metadata.projects.settings.count;
-
-        //        console.log('Success!', result);
-        //    }, function (error) {
-        //        console.log('Failure...', error);
-        //    }
-        //);
     }
-
-
-
 
     function activateTab(code) {
         vm.activeProduct = vm.project.products.filter(function (tab) {

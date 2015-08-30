@@ -57,7 +57,7 @@ module.exports = (function () {
         });
     }];
 
-    var appController = ['$scope', function ($scope) {
+    var appController = ['$http', '$scope', '$rootScope', function ($http, $scope, $rootScope) {
         var appvm = this;
 
         appvm.phoneOptions = ['phone1', 'phone2', 'phone3', 'phone4'];
@@ -67,6 +67,25 @@ module.exports = (function () {
         appvm.loginUrl  = appPath + '/modules/pb-login/pb.login.tmpl.html';
         appvm.headerUrl = appPath + '/modules/pb-header/pb.header.tmpl.html';
         appvm.footerUrl = appPath + '/modules/pb-footer/pb.footer.tmpl.html';
+
+        init();
+
+        function init() {
+            getValuator();
+        }
+
+        function getValuator() {
+            var baseUrl = '/api/valuators/';
+            $http({
+                url: baseUrl + '55e11b262b0eed8027e33f00',
+                method: "GET"
+            }).success(function (valuator) {
+                console.log('root');
+                console.log(valuator);
+                $rootScope.currentValuator = valuator;
+            });
+        }
+
     }];
 
     // Add a new vertical module

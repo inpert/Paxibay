@@ -16,8 +16,33 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         deleteValuator: deleteValuator        
     };
   
+    function createValuator() {
+        var deferred = $q.defer();
+        var url = '/api/valuators';
+        $http.post(url, null)
+          .then(deferred.resolve, deferred.reject);
+
+        return deferred.promise;
+    }
+
     function get() {
         return $resource('/api/project').query().$promise;
+    }
+
+    function getValuator() {
+        var baseUrl = '/api/valuators/';
+        $http({
+            url: baseUrl + '55e11ba32b0eed8027e33f01',
+            method: "GET"
+        }).success(function (modifiedProject) {
+            console.log(modifiedProject);
+        });
+    }
+
+    function getValuators() {
+        var productsResource = $resource('/api/valuators');
+        var resource = productsResource.query().$promise;
+        return resource;
     }
 
     function getValuators_() {
@@ -30,52 +55,6 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         });
 
     }
-
-    function ssdeleteValuator(valuator) {
-        if (valuator._id == '55e11ba32b0eed8027e33f01') {
-            var str = null;
-            valuator.$delete().then(function () {
-                console.log('delete success');
-            });
-        }
-    }
-
-    function getValuators () {
-        var productsResource = $resource('/api/valuators');
-        var resource = productsResource.query().$promise;
-        return resource;
-    }
-
-
-    function createValuator() {
-        var deferred = $q.defer();
-        var url = '/api/valuators';
-        $http.post(url, null)
-          .then(deferred.resolve, deferred.reject);
-
-        return deferred.promise;
-    }
-   
-    function getValuator() {
-        var baseUrl = '/api/valuators/';
-        $http({
-            url: baseUrl + '55e11ba32b0eed8027e33f01',
-            method: "GET"
-        }).success(function (modifiedProject) {
-            console.log(modifiedProject);
-        });
-    }
-
-    //function updateValuator(valuator) {
-    //    var baseUrl = '/api/valuators/';
-    //    $http({
-    //        url: baseUrl + '55e11ba32b0eed8027e33f01',
-    //        method: "PUT",
-    //        data: valuator
-    //    }).success(function (modifiedProject) {
-    //        console.log(modifiedProject);
-    //    });
-    //}
 
     function updateValuator(valuator) {
         var baseUrl = '/api/valuators/';
@@ -103,8 +82,3 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         return resource.query().$promise;
     }
 }
-
-// 55e11b262b0eed8027e33f00
-// 55e11ba32b0eed8027e33f01
-//
-//
