@@ -77,11 +77,11 @@ module.exports = (function () {
         function getValuator() {
             var baseUrl = '/api/valuators/';
             $http({
-                url: baseUrl + '55e11b262b0eed8027e33f00',
+                url: baseUrl + '55e355bf5302f520096fed7c',
                 method: "GET"
             }).success(function (valuator) {
-                console.log('root');
-                console.log(valuator);
+                //console.log('root');
+                //console.log(valuator);
                 $rootScope.currentValuator = valuator;
             });
         }

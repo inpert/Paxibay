@@ -4,9 +4,28 @@ function pbDashboardController($scope, $http, pbDashboardService) {
 
     var vm = this;
     vm.title = 'Dashboard Product';
-    vm.qty = 1;
+    //vm.promise = null;
 
-    pbDashboardService.getProducts().then(function (data) {
-        vm.qty = data[0].qty;
-    });
+    //vm.newValuator = newValuator;
+    //vm.removeValuator = removeValuator;
+
+    //init();
+
+    //function init() {
+    //    vm.promise = pbDashboardService.createValuator();
+    //}
+
+    //function newValuator() {
+    //    vm.promise.then(
+    //        function (result) {
+    //            console.log('Success!', result);
+    //        }, function (error) {
+    //            console.log('Failure...', error);
+    //        }
+    //    );
+    //}
+
+    //function removeValuator(valuator) {
+    //    pbDashboardService.deleteValuator(valuator);
+    //}
 }

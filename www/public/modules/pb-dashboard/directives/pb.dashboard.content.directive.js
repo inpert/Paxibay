@@ -25,7 +25,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     var vm = this;
 
     // attributes
-    vm.titile = 'this vm directive title';
     vm.projectCount = 'Project Count:';
     vm.count = 0;
 
@@ -34,9 +33,7 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.project = {};
     vm.activeProduct = {};
     vm.tabs = [];
-
-    vm.valuatorPromise = null;
-    vm.valuatorInstance = {};
+    vm.projectInstance = {};
 
 
     // urls for ng-include
@@ -46,12 +43,12 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.activateTab = activateTab;
     vm.getProjects = getProjects;
     vm.updateProject = updateProject;
+    vm.createValuator = createValuator;
 
 
     $scope.$watch(onCountChange, adjustProjectTags);
     $scope.$watch('onScaleChange', scaleChangeHandler);
     $scope.$watch('onPriceChange', priceChangeHandler);
-
    
 
     //$scope.$on('refreshController', init);
@@ -59,9 +56,16 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     init();
 
     function init() {
-        //vm.valuatorPromise = pbDashboardService.createValuator();
-        //createValuator();
+
+        vm.projectInstance = $rootScope.currentValuator.metadata.projects;
+        console.log(vm.projectInstance);
+
+        vm.count = vm.projectInstance.settings.count;
+
+
+
         getProducts();
+
 
         //vm.valuatorPromise = pbDashboardService.getValuators();
         //pbDashboardService.deleteValuator();
@@ -88,20 +92,29 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     //============================================= 
 
     function createValuator() {
-        vm.valuatorPromise.then(
-            function (result) {
-                vm.valuatorInstance = result;
+        pbDashboardService.createValuator();
 
-                vm.count = result.data.metadata.projects.settings.count;
 
-                result.data.metadata.projects.settings.count = 1;
 
-                console.log('Success!', result);
-            }, function (error) {
-                console.log('Failure...', error);
-            }
-        );
+
+
+        ////==================================
+        //vm.valuatorPromise.then(
+        //    function (result) {
+        //        vm.valuatorInstance = result;
+
+        //        vm.count = result.data.metadata.projects.settings.count;
+
+        //        result.data.metadata.projects.settings.count = 1;
+
+        //        console.log('Success!', result);
+        //    }, function (error) {
+        //        console.log('Failure...', error);
+        //    }
+        //);
     }
+
+    
 
     function getValuator() {
         vm.valuatorPromise.then(
@@ -116,8 +129,26 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     }
 
     function updateProject() {
-        pbDashboardService.updateValuator(vm.valuatorInstance);
+        // projects: { code: String, title: String, name: String, scale: Number, unit: String, symbol: String, price: Number },
+        //{ "code": "01", "title": "Product 1", "name": "Product 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
+        //{ "code": "02", "title": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 },
+
+        //vm.projectInstance = $rootScope.currentValuator.metadata.projects;
+
+        vm.projectInstance.projects = [
+            { "code": "01", "title": "Product 1", "name": "Product 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
+            { "code": "02", "title": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
+        ];
+
+        $rootScope.currentValuator.metadata.projects = vm.projectInstance;
+
+        pbDashboardService.updateValuator($rootScope.currentValuator);
     }
+
+
+
+
+
 
     function activateTab(code) {
         vm.activeProduct = vm.project.products.filter(function (tab) {

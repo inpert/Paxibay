@@ -1,9 +1,16 @@
 <div class="panel panel-default">
     <div class="side-panel-container">
-        <h3>
-            {{vm.titile}}
-        </h3>
-        <br />
+        <span>
+            <button class="btn btn-primary"
+                    ng-click="vm.createValuator()">
+                Add
+            </button>
+            <button class="btn btn-primary"
+                    ng-click="vm.updateProject()">
+                Update
+            </button>
+        </span>
+        <br /><br />
         <div>
             <label>
                 {{vm.projectCount}}
