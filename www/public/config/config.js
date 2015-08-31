@@ -77,7 +77,7 @@ module.exports = (function () {
         function getValuator() {
             var baseUrl = '/api/valuators/';
             $http({
-                url: baseUrl + '55e355bf5302f520096fed7c',
+                url: baseUrl + '55e395a874a7469416566da7',
                 method: "GET"
             }).success(function (valuator) {
                 //console.log('root');

@@ -3,38 +3,31 @@
     <section class="product-panel">
 
         <label for="product_name" class="latblesection">Name</label>
-        <input type="text" id="product_name" ng-model="vm.activeProduct.name" placeholder='enter projectname'><br>
+        <input type="text" id="product_name" ng-model="vm.activeProject.name" placeholder='enter projectname'><br>
 
         <label for="scale">Scale</label>
-        <input type="number" id="scale" ng-model="vm.activeProduct.scale" ><br>
+        <input type="number" id="scale" ng-model="vm.activeProject.scale" ><br>
         
 
         <label for="unit">
             Unit
-            <select ng-model="vm.activeProduct.unit"
+            <select ng-model="vm.activeProject.unit"
                     ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
         </label>
 
         <label for="symbol">
             Symbol
-            <select ng-model="vm.activeProduct.symbol"
+            <select ng-model="vm.activeProject.symbol"
                     ng-options="symbol.lookupCode as symbol.description for symbol in symbolOptions"></select>
         </label>
         <br />
         <label for="price">Price</label>
-        <input type="number" id="price" ng-model="vm.activeProduct.price"><br>
+        <input type="number" id="price" ng-model="vm.activeProject.price"><br>
 
     </section>
 
     <br />
 
-    <hr />
-
-    <button class="btn btn-primary"
-            ng-click="vm.updateProject()">
-        Add Emplyee
-    </button>
-   
     <hr />
     
     <br />

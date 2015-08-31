@@ -8,7 +8,7 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
 
     return {
         getProducts: getProducts,
-        get: get,
+        //get: get,
         createValuator: createValuator,
         getValuator: getValuator,
         getValuators: getValuators,
@@ -25,9 +25,9 @@ function pbDashboardService($q, $http, $rootScope, $resource) {
         return deferred.promise;
     }
 
-    function get() {
-        return $resource('/api/project').query().$promise;
-    }
+    //function get() {
+    //    return $resource('/api/project').query().$promise;
+    //}
 
     function getValuator() {
         var baseUrl = '/api/valuators/';

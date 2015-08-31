@@ -1,7 +1,7 @@
 ﻿
 var mongoose = require('mongoose'),
     settings = require('./dependancy/paxi.valuator.dependancy.settings.model'),
-    projects = require('./dependancy/paxi.valuator.dependancy.projects.model'),
+    blueprint = require('./dependancy/paxi.valuator.dependancy.blueprint.model'),
     taxing = require('./dependancy/paxi.valuator.dependancy.taxing.model'),
     costing = require('./dependancy/paxi.valuator.dependancy.costing.model')
     investing = require('./dependancy/paxi.valuator.dependancy.investing.model'),
@@ -10,13 +10,15 @@ var mongoose = require('mongoose'),
 
 var metadata = {
     settings: settings,
-    projects: projects,
+    blueprint: blueprint,
     taxing: taxing,
     costing: costing,
     investing: investing,
     lending: lending,
     depreciation: depreciation
 };
+
+var reports = {};
 
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
@@ -28,7 +30,8 @@ var ValuatorSchema = Schema({
         index: true,
         default: '100000'
     },
-    metadata: metadata
+    metadata: metadata,
+    reports: reports
 });
 
 mongoose.model('Valuator', ValuatorSchema);

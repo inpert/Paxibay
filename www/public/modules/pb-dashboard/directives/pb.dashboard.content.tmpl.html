@@ -16,15 +16,19 @@
                 {{vm.projectCount}}
                 <input type="number" name="input" ng-model="qty"
                        style="width:100px" min="1" max="9" required>
-                <input type="number" name="input" ng-model="vm.count"
+                <input type="number" name="input" ng-model="vm.blueprintInstance.settings.count"
                        style="width:100px" min="1" max="9" required>
             </label>
         </div>
         <br /><br />
         <tabset>
-            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.code)" >
-                <div ng-include="tab.content"></div>
+            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" >
+                aaaa
             </tab> 
+
+            <!--<tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.code)">
+                <div ng-include="tab.content"></div>
+            </tab>--> 
         </tabset>
         <br /><br />
     </div>
