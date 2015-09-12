@@ -45,8 +45,8 @@
             <tbody>
                 <tr ng-repeat="row in vm.blueprint.scales">
                     <td>{{row.year}}</td>
-                    <td>{{row.scale[0]}}</td>
-                    <td>{{row.price[0]}}</td>
+                    <td>{{row.scale[vm.activeScale(row)]}}</td>
+                    <td>{{row.price[vm.activeScale(row)]}}</td>
                     <td>{{row.scale[0] * row.price[0]}}</td>
                 </tr>
             </tbody>

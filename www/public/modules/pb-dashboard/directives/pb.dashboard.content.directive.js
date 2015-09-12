@@ -26,15 +26,12 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
     // attributes
     vm.blueprint = {};
-
-    vm.projectCount = 'Project Count:';
-
-    $scope.qty = 0;
-    vm.project = {};
-    vm.activeProduct = {};
     vm.activeProject = {};
     vm.tabs = [];
-    vm.valuatorPromise = null;
+    $scope.count = 9;
+    $scope.qty = 0;
+
+    vm.projectCount = 'Project Count:';
 
     // urls for ng-include
     vm.tabURL = './modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html';
@@ -44,6 +41,7 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.getScales = getScales;
     vm.updateProject = updateProject;
     vm.createValuator = createValuator;
+    vm.activeScale = activeScale;
 
 
     $scope.$watch('qty', adjustProjectTags);
@@ -73,13 +71,9 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
             { 'lookupCode': 'ton2', 'description': 'ton2' }
         ];
 
-        //if (vm.blueprint.scales.length == 0) {
-        //    vm.getScales()
-        //}
-        vm.getScales()
-
-        //vm.valuatorPromise = pbDashboardService.getValuators();
-        //pbDashboardService.deleteValuator();
+        if (vm.blueprint.scales.length == 0) {
+            vm.getScales()
+        }
     }
 
     function getScales() {
@@ -93,8 +87,17 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
         var year = startYear;
         for (var i = 0; i < vm.blueprint.settings.period; i++) {
-            vm.blueprint.scales[i] = { year: year, scale: [100, 0], price: [110, 0]};
+            vm.blueprint.scales[i] = { year: year, scale: [100, 0, 0, 0, 0, 0, 0, 0, 0], price: [110, 0, 0, 0, 0, 0, 0, 0, 0] };
             year++;
+        }
+
+        //for (var i = vm.blueprint.projects.length; i > 1; i--) {
+        //    vm.blueprint.projects.pop(vm.blueprint.projects[i]);
+        //}
+
+        for (var i = 1; i < 9; i++) {
+            var project = { "code": "0" + (i + 1), "title": "project " + (i + 1), "name": "project " + (i + 1), "scale": 0, "unit": "hundred", "symbol": "ton1", "price": 0 };
+            vm.blueprint.projects.push(project);
         }
 
         vm.updateProject();
@@ -102,24 +105,11 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     //============================================= 
 
     function createValuator() {
-        vm.valuatorPromise = pbDashboardService.createValuator();
+        var valuatorPromise = pbDashboardService.createValuator();
 
         //==================================
-        vm.valuatorPromise.then(
+        valuatorPromise.then(
             function (result) {
-                console.log('Success!', result);
-            }, function (error) {
-                console.log('Failure...', error);
-            }
-        );
-    }
-    
-
-    function getValuator() {
-        vm.valuatorPromise.then(
-            function (result) {
-                vm.valuatorInstance = result;
-
                 console.log('Success!', result);
             }, function (error) {
                 console.log('Failure...', error);
@@ -128,36 +118,40 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     }
 
     function updateProject() {
-        vm.blueprint.projects = [
-            { "code": "01", "title": "project 1", "name": "project 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
-            { "code": "02", "title": "project 2", "name": "project 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
-        ];
-
         $rootScope.currentValuator.metadata.projects = vm.blueprint;
         pbDashboardService.updateValuator($rootScope.currentValuator);
     }
 
-
+    function activeScale(row) {
+        var codeNumber = parseInt(vm.activeProject.code);
+        return codeNumber - 1;
+    }
+   
     function activateTab(code) {
         vm.activeProject = vm.blueprint.projects.filter(function (tab) {
             return tab.code == code;
         })[0];
 
         console.log(vm.activeProject.title);
+
+        //============================================
+        if (vm.blueprint.scales.length == 0) {
+            vm.getScales()
+        }
     }
 
-    //============================================
-    $scope.$watch('vm.activeProduct.scale', function (scale) {
-        for (var i = 0; i < vm.project.period; i++) {
-            vm.project.scales[i].scale[1] = scale;
-        }
-    });
+    ////============================================
+    //$scope.$watch('vm.activeProduct.scale', function (scale) {
+    //    for (var i = 0; i < vm.project.period; i++) {
+    //        vm.project.scales[i].scale[1] = scale;
+    //    }
+    //});
 
-    $scope.$watch('vm.activeProduct.price', function (price) {
-        for (var i = 0; i < vm.project.period; i++) {
-            vm.project.scales[i].price[1] = price;
-        }
-    });
+    //$scope.$watch('vm.activeProduct.price', function (price) {
+    //    for (var i = 0; i < vm.project.period; i++) {
+    //        vm.project.scales[i].price[1] = price;
+    //    }
+    //});
 
     function scaleChangeHandler(scale) {
 
