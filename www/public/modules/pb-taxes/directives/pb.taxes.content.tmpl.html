@@ -1,0 +1,124 @@
+<div class="panel panel-default policy-table">
+    <div class="panel-heading"><h4>ssss</h4></div>
+
+    <tabset>
+        <tab data-ng-repeat="tab in vm.tabs" heading="title1" ng-click="vm.activateTab(tab.code)">
+            aaaa
+        </tab>
+        <tab data-ng-repeat="tab in vm.tabs" heading="title2" ng-click="vm.activateTab(tab.code)">
+            dddd
+        </tab>
+    </tabset>
+
+    <section class="product-panel">
+
+        <label for="product_name" class="latblesection">Name</label>
+        <input type="text" id="product_name" ng-model="vm.activeProduct.name" placeholder='enter projectname'><br>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+        <label>
+            asdf
+            <input type="checkbox" name="input" ng-model="qty">
+        </label>
+
+    </section>
+
+    <hr />
+
+    <section class="product-panel">
+
+        <label for="product_name" class="latblesection">Name</label>
+        <input type="text" id="product_name" ng-model="vm.activeProduct.name" placeholder='enter projectname'><br>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+        <label for="unit">
+            Unit
+            <select ng-model="vm.activeProduct.unit"
+                    ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        </label>
+
+        <label for="symbol">
+            Symbol
+            <select ng-model="vm.activeProduct.symbol"
+                    ng-options="symbol.lookupCode as symbol.description for symbol in symbolOptions"></select>
+        </label>
+        <table>
+            <tr>
+                <td>aaaa</td><td>vvvv</td><td>ssss</td><td>cccc</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            add
+        </button>
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            Delete
+        </button>
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            Save
+        </button>
+    </section>
+
+    <hr />
+
+    <section class="product-panel">
+
+        <label for="product_name" class="latblesection">Name</label>
+        <input type="text" id="product_name" ng-model="vm.activeProduct.name" placeholder='enter projectname'><br>
+
+        <label for="unit">
+            Unit
+            <select ng-model="vm.activeProduct.unit"
+                    ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        </label>
+
+        <label for="scale">Scale</label>
+        <input type="number" id="scale" ng-model="vm.activeProduct.scale"><br>
+
+        
+
+        <label for="symbol">
+            Symbol
+            <select ng-model="vm.activeProduct.symbol"
+                    ng-options="symbol.lookupCode as symbol.description for symbol in symbolOptions"></select>
+        </label>
+    </section>
+
+    <hr />
+
+    <section class="product-panel">
+
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            Adjust...
+        </button>
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            Default
+        </button>
+    </section>
+
+</div>

@@ -22,13 +22,9 @@
         </div>
         <br /><br />
         <tabset>
-            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" >
-                aaaa
-            </tab> 
-
-            <!--<tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.code)">
+            <tab data-ng-repeat="tab in vm.tabs" heading="{{tab.title}}" ng-click="vm.activateTab(tab.code)">
                 <div ng-include="tab.content"></div>
-            </tab>--> 
+            </tab> 
         </tabset>
         <br /><br />
     </div>

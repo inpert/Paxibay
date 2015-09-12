@@ -25,16 +25,18 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     var vm = this;
 
     // attributes
+    vm.blueprint = {};
+
     vm.projectCount = 'Project Count:';
 
     $scope.qty = 0;
     vm.project = {};
     vm.activeProduct = {};
     vm.activeProject = {};
-    vm.blueprintInstance = {};
 
     vm.tabs = [];
     vm.valuatorPromise = null;
+    vm.tabURL = './modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html';
 
 
     // urls for ng-include
@@ -47,9 +49,9 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.createValuator = createValuator;
 
 
-    //$scope.$watch('vm.blueprintInstance.settings.count', adjustProjectTags);
+    //$scope.$watch('vm.blueprint.settings.count', adjustProjectTags);
 
-    //$scope.$watch('qty', adjustProjectTags);
+    $scope.$watch('qty', adjustProjectTags);
     $scope.$watch('onScaleChange', scaleChangeHandler);
     $scope.$watch('onPriceChange', priceChangeHandler);
    
@@ -60,15 +62,15 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
     function init() {
 
-        vm.blueprintInstance = $rootScope.currentValuator.metadata.blueprint;
-        console.log(vm.blueprintInstance);
+        vm.blueprint = $rootScope.currentValuator.metadata.blueprint;
+        console.log(vm.blueprint);
 
 
-        //$scope.qty = vm.blueprintInstance.settings.count;
+        //$scope.qty = vm.blueprint.settings.count;
 
-        getProducts();
+        //getProducts();
 
-        //getProjects();
+        getProjects();
 
 
         //vm.valuatorPromise = pbDashboardService.getValuators();
@@ -90,7 +92,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
             }
         );
     }
-
     
 
     function getValuator() {
@@ -106,37 +107,25 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     }
 
     function updateProject() {
-        vm.blueprintInstance.projects = [
+        vm.blueprint.projects = [
             { "code": "01", "title": "Product 1", "name": "Product 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
             { "code": "02", "title": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
         ];
 
-        $rootScope.currentValuator.metadata.projects = vm.blueprintInstance;
+        $rootScope.currentValuator.metadata.projects = vm.blueprint;
         pbDashboardService.updateValuator($rootScope.currentValuator);
     }
 
 
     function activateTab(code) {
-        vm.activeProduct = vm.project.products.filter(function (tab) {
+        vm.activeProject = vm.blueprint.projects.filter(function (tab) {
             return tab.code == code;
         })[0];
 
-        console.log(vm.activeProduct.title);
+        console.log(vm.activeProject.title);
     }
 
-
     //============================================
-    $scope.$watch('qty', function (qty) {
-        vm.tabs = [];
-        for (var i = 0; i < qty; i++) {
-            vm.tabs.push({
-                code: vm.project.products[i].code,
-                title: vm.project.products[i].title,
-                content: vm.project.content_link
-            });
-        }
-    });    
-
     $scope.$watch('vm.activeProduct.scale', function (scale) {
         for (var i = 0; i < vm.project.period; i++) {
             vm.project.scales[i].scale[1] = scale;
@@ -157,66 +146,22 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
     }
 
-    function adjustProjectTags(count) {
+    function adjustProjectTags(qty) {
         vm.tabs = [];
-        for (var i = 0; i < count; i++) {
+
+        for (var i = 0; i < qty; i++) {
             vm.tabs.push({
-                code: (i + 1).toString(),
-                title: 'title' + (i+1),
-                content: 'aaaa'
+                code: vm.blueprint.projects[i].code,
+                title: vm.blueprint.projects[i].title,
+                content: vm.tabURL
             });
         }
-
-
-        //for (var i = 0; i < count; i++) {
-        //    vm.tabs.push({
-        //        code: vm.blueprintInstance.projects[i].code,
-        //        title: vm.blueprintInstance.projects[i].title,
-        //        content: './modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html'
-        //    });
-        //}
-    }
-
-    function onCountChange() {
-        return vm.count;
-    }
-
-    function getProducts() {
-        pbDashboardService.getProducts().then(function (data) {
-            vm.project = data[0];
-
-            $scope.qty = vm.project.products_amount;
-            vm.activeProduct = vm.project.products[0];
-
-            $scope.unitOptions = [
-                { 'lookupCode': 'thousand', 'description': 'thousand' },
-                { 'lookupCode': 'hundred', 'description': 'hundred' }
-            ];
-
-            $scope.symbolOptions = [
-                { 'lookupCode': 'ton1', 'description': 'ton1' },
-                { 'lookupCode': 'ton2', 'description': 'ton2' }
-            ];
-
-            var year = 2004;
-            for (var i = 0; i < vm.project.period; i++) {
-                if (year.toString() == vm.project.start) {
-                    vm.project.scales[i].year = year.toString() + " (start year)";
-                }
-                else {
-                    vm.project.scales[i].year = year.toString();
-                }
-                year++;
-            }
-        });
     }
     
     function getProjects() {
 
-        //vm.projectInstance;
-        // "settings": { "products_amount": 2, "period": 30, "start": "2004", "initial": true, "content_link": "./modules/pb-dashboard/directives/pb.dashboard.content.tabs.tmpl.html" },
-
-        vm.activeProject = vm.blueprintInstance.projects[0];
+        $scope.qty = vm.blueprint.settings.count;
+        vm.activeProject = vm.blueprint.projects[0];
 
         $scope.unitOptions = [
             { 'lookupCode': 'thousand', 'description': 'thousand' },
@@ -228,15 +173,21 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
             { 'lookupCode': 'ton2', 'description': 'ton2' }
         ];
 
-        //var year = 2004;
-        //for (var i = 0; i < vm.project.period; i++) {
-        //    if (year.toString() == vm.project.start) {
-        //        vm.project.scales[i].year = year.toString() + " (start year)";
-        //    }
-        //    else {
-        //        vm.project.scales[i].year = year.toString();
-        //    }
-        //    year++;
-        //}
+        var year = 2004;
+        for (var i = 0; i < vm.blueprint.settings.period; i++) {
+            //if (year.toString() == vm.blueprint.settings.startYear) {
+            //    vm.blueprint.scales[i].year = year.toString() + " (start year)";
+            //}
+            //else {
+            //    vm.blueprint.scales[i].year = year.toString();
+            //}
+
+            //vm.blueprint.scales[i].year = year.toString();
+            //year++;
+        }
+    }
+
+    function onCountChange() {
+        return vm.count;
     }
 }
