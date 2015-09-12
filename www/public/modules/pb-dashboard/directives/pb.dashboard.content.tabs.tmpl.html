@@ -43,11 +43,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in vm.project.scales">
+                <tr ng-repeat="row in vm.blueprint.scales">
                     <td>{{row.year}}</td>
-                    <td>{{row.scale[1]}}</td>
-                    <td>{{row.price[1]}}</td>
-                    <td>{{row.scale[1] * row.price[1]}}</td>
+                    <td>{{row.scale[0]}}</td>
+                    <td>{{row.price[0]}}</td>
+                    <td>{{row.scale[0] * row.price[0]}}</td>
                 </tr>
             </tbody>
             <tfoot>

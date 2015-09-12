@@ -1,4 +1,4 @@
-module.exports = {
+﻿module.exports = {
     directive: ['pbDashboardService', pbDashboardContentDirective],
     controller: ['$scope', '$rootScope', '$http', '$location', 'pbDashboardService', pbDashboardContentController]
 };
@@ -73,10 +73,10 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
             { 'lookupCode': 'ton2', 'description': 'ton2' }
         ];
 
-        if (vm.blueprint.scales.length == 0) {
-            vm.getScales()
-        }
-
+        //if (vm.blueprint.scales.length == 0) {
+        //    vm.getScales()
+        //}
+        vm.getScales()
 
         //vm.valuatorPromise = pbDashboardService.getValuators();
         //pbDashboardService.deleteValuator();
@@ -85,18 +85,19 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     function getScales() {
         console.log(vm.blueprint.scales.length);
 
-        var year = 2004;
-        for (var i = 0; i < vm.blueprint.settings.period; i++) {
-            //if (year.toString() == vm.blueprint.settings.startYear) {
-            //    vm.blueprint.scales[i].year = year.toString() + " (start year)";
-            //}
-            //else {
-            //    vm.blueprint.scales[i].year = year.toString();
-            //}
+        // leadtime 投产准备期
+        // trial period
+        var startYear = 2014;
+        var trialPeriod = startYear + 2;
+        var fullScales = startYear + 4;
 
-            //vm.blueprint.scales[i].year = year.toString();
-            //year++;
+        var year = startYear;
+        for (var i = 0; i < vm.blueprint.settings.period; i++) {
+            vm.blueprint.scales[i] = { year: year, scale: [100, 0], price: [110, 0]};
+            year++;
         }
+
+        vm.updateProject();
     }
     //============================================= 
 
@@ -128,8 +129,8 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
     function updateProject() {
         vm.blueprint.projects = [
-            { "code": "01", "title": "Product 1", "name": "Product 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
-            { "code": "02", "title": "Product 2", "name": "Product 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
+            { "code": "01", "title": "project 1", "name": "project 1", "scale": 100, "unit": "hundred", "symbol": "ton1", "price": 110 },
+            { "code": "02", "title": "project 2", "name": "project 2", "scale": 200, "unit": "hundred", "symbol": "ton2", "price": 120 }
         ];
 
         $rootScope.currentValuator.metadata.projects = vm.blueprint;
