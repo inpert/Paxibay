@@ -28,8 +28,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.blueprint = {};
     vm.activeProject = {};
     vm.tabs = [];
-    $scope.count = 9;
-    $scope.qty = 0;
 
     vm.projectCount = 'Project Count:';
 
@@ -44,7 +42,7 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     vm.activeScale = activeScale;
 
 
-    $scope.$watch('qty', adjustProjectTags);
+    $scope.$watch('vm.blueprint.settings.count', adjustProjectTags);
     $scope.$watch('onScaleChange', scaleChangeHandler);
     $scope.$watch('onPriceChange', priceChangeHandler);
    
@@ -58,7 +56,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
         vm.blueprint = $rootScope.currentValuator.metadata.blueprint;
         console.log(vm.blueprint);
 
-        $scope.qty = vm.blueprint.settings.count;
         vm.activeProject = vm.blueprint.projects[0];
 
         vm.unitOptions = [
@@ -133,11 +130,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
         })[0];
 
         console.log(vm.activeProject.title);
-
-        //============================================
-        if (vm.blueprint.scales.length == 0) {
-            vm.getScales()
-        }
     }
 
     ////============================================
@@ -171,6 +163,8 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
                 content: vm.tabURL
             });
         }
+
+        vm.updateProject();
     }
 
     function onCountChange() {
