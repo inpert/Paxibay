@@ -68,8 +68,8 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
             { 'lookupCode': 'ton2', 'description': 'ton2' }
         ];
 
-        if (vm.blueprint.scales.length == 0) {
-            vm.getScales()
+        if (vm.blueprint.scales.length === 0) {
+            vm.getScales();
         }
     }
 
@@ -92,8 +92,8 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
         //    vm.blueprint.projects.pop(vm.blueprint.projects[i]);
         //}
 
-        for (var i = 1; i < 9; i++) {
-            var project = { "code": "0" + (i + 1), "title": "project " + (i + 1), "name": "project " + (i + 1), "scale": 0, "unit": "hundred", "symbol": "ton1", "price": 0 };
+        for (var j = 1; j < 9; j++) {
+            var project = { "code": "0" + (j + 1), "title": "project " + (j + 1), "name": "project " + (j + 1), "scale": 0, "unit": "hundred", "symbol": "ton1", "price": 0 };
             vm.blueprint.projects.push(project);
         }
 
@@ -115,7 +115,6 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
     }
 
     function updateProject() {
-        $rootScope.currentValuator.metadata.projects = vm.blueprint;
         pbDashboardService.updateValuator($rootScope.currentValuator);
     }
 

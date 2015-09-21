@@ -1,19 +1,22 @@
 ﻿
 module.exports = {
     settings: {
+        isinitial: {
+            type: Boolean,
+            default: true
+        },
         duration: {
             period: {
                 type: Number,
                 default: 20
             },
-            beginning: {
+            startyear: {
                 type: String,
-                default: Date.now.toString()
+                default: '2014'
             },
-            startyear: Number,
-            imcomeyear: Number,
+            trialyear: Number,
             normalyear: Number,
-            hasprepare: Boolean,
+            hasleadtime: Boolean,
             baseprice: Boolean,
             currency: {
                 enca: {

@@ -1,65 +1,66 @@
 <div class="panel panel-default">
-    <div class="col-md-12">
-        <div class="col-md-6">
-            <br />
-            <div>
-                <label>
-                    asdf
-                    <input type="number" name="input" ng-model="qty"
-                           style="width:100px" min="1" max="9" required>
-                </label>
-            </div>
-            <div>
-                <label>
-                    asdf
-                    <input type="number" name="input" ng-model="qty"
-                           style="width:100px" min="1" max="9" required>
-                </label>
-            </div>
-            <div>
-                <label>
-                    asdf
-                    <input type="number" name="input" ng-model="qty"
-                           style="width:100px" min="1" max="9" required>
-                </label>
-            </div>
-            <div>
-                <label>
-                    asdf
-                    <input type="number" name="input" ng-model="qty"
-                           style="width:100px" min="1" max="9" required>
-                </label>
-            </div>
 
-            <div>
-                <label>
-                    asdf
-                    <input type="checkbox" name="input" ng-model="qty">
-                </label>
-            </div>
+    <div>
+        <br />
+        <div>
+            <label>
+                asdf
+                <input type="number" name="input" ng-model="qty"
+                       style="width:100px" min="1" max="9" required>
+            </label>
         </div>
-
-        <div class="col-md-6">
-            <div>
-                <label>
-                    asdf
-                    <input type="checkbox" name="input" ng-model="qty">
-                </label>
-            </div>
-
-            <button class="btn btn-primary"
-                    ng-click="vm.updateProject()">
-                Load Data
-            </button>
-            <br />
-
-            <label for="unit">
-                Unit
-                <select ng-model="vm.activeProduct.unit"
-                        ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        <div>
+            <label>
+                asdf
+                <input type="number" name="input" ng-model="qty"
+                       style="width:100px" min="1" max="9" required>
+            </label>
+        </div>
+        <div>
+            <label>
+                asdf
+                <input type="number" name="input" ng-model="qty"
+                       style="width:100px" min="1" max="9" required>
+            </label>
+        </div>
+        <div>
+            <label>
+                asdf
+                <input type="number" name="input" ng-model="qty"
+                       style="width:100px" min="1" max="9" required>
             </label>
         </div>
 
+        <div>
+            <label>
+                asdf
+                <input type="checkbox" name="input" ng-model="qty">
+            </label>
+        </div>
     </div>
+
+    <hr />
+
+    <div>
+        <div>
+            <label>
+                asdf
+                <input type="checkbox" name="input" ng-model="qty">
+            </label>
+        </div>
+
+        <button class="btn btn-primary"
+                ng-click="vm.updateProject()">
+            Load Data
+        </button>
+        <br />
+
+        <label for="unit">
+            Unit
+            <select ng-model="vm.activeProduct.unit"
+                    ng-options="unit.lookupCode as unit.description for unit in unitOptions"></select>
+        </label>
+    </div>
+
 
 </div>

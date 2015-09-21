@@ -5,11 +5,7 @@ var _ = require('underscore'),
 	express = require('express'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
-	//session = require('express-session'),
-	//compression = require('compression'),
 	methodOverride = require('method-override'),
-	//cookieParser = require('cookie-parser'),
-	//config = require('./config');
 	path = require('path');
 
 var routes = require('../app/routes.js');
@@ -18,20 +14,7 @@ var projectData = require('../app/models/pbprojectFake');
 
 module.exports = function (db) {
 
-    //db.on('error', console.error);
-    //db.once('open', function callback() {
-    //    console.log('mongodb connection opened.');
-    //});
-
     var app = express();
-
-    //// Setting application local variables
-    //app.locals.title = config.app.title;
-    //app.locals.description = config.app.description;
-    //app.locals.keywords = config.app.keywords;
-    //app.locals.facebookAppId = config.facebook.clientID;
-    //app.locals.jsFiles = config.getJavaScriptAssets();
-    //app.locals.cssFiles = config.getCSSAssets();
 
     // configuration ==========================================
     app.use(morgan('dev'));
@@ -76,10 +59,7 @@ module.exports = function (db) {
     // Load the routing files
     require('../app/routes/paxi.valuator.routes.js')(app);
 
-
     app.use(express.static(path.resolve('./www/public')));
-
-    //employeeController.init(app);
     
     return app;
 };

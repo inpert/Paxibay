@@ -71,6 +71,8 @@ module.exports = (function () {
         init();
 
         function init() {
+            //initialValuator();
+
             getValuator();
         }
 
@@ -80,11 +82,34 @@ module.exports = (function () {
                 url: baseUrl + '55e395a874a7469416566da7',
                 method: "GET"
             }).success(function (valuator) {
-                //console.log('root');
                 //console.log(valuator);
                 $rootScope.currentValuator = valuator;
             });
         }
+
+        function initialValuator() {
+            //createValuator();
+
+            ////==================================
+            //valuatorPromise.then(
+            //    function (result) {
+            //        console.log('Success!', result);
+            //    }, function (error) {
+            //        console.log('Failure...', error);
+            //    }
+            //);
+        }
+
+        function createValuator() {
+            var url = '/api/valuators';
+            $http.post(url, null).then(
+                function (result) {
+                    console.log('Success!', result);
+                }, function (error) {
+                    console.log('Failure...', error);
+                });
+        }
+
 
     }];
 
