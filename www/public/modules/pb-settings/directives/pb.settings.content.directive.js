@@ -22,6 +22,10 @@ function pbSettingsContentDirective() {
 function pbSettingsContentController($scope, $rootScope, pbSettingsService) {
 
     var vm = this;
+
+    vm.metadata = {};
+
+
     vm.updateSettings = updateSettings;
 
     vm.tabs = [
@@ -37,16 +41,17 @@ function pbSettingsContentController($scope, $rootScope, pbSettingsService) {
         vm.settings = $rootScope.currentValuator.metadata.settings;
         console.log(vm.settings);
         //vm.settings.settings.duration.startyear = new Date().getFullYear();
-        vm.settings.settings.isinitial = false;
+        //vm.settings.settings.isinitial = false;
+        //vm.settings.settings.duration.period = 24;
+        //vm.updateSettings();
 
-        //delete vm.settings.settings.duration.beginning;
 
-        vm.updateSettings();
+        vm.metadata = $rootScope.currentValuator.metadata.settings;
 
-        //if (vm.settings.scales.length === 0) {
-        //    vm.getScales();
-        //}
-        //delete vm.settings.settings.duration.beginning;
+        //vm.metadata.settings.duration.period
+
+
+
     }
 
     function updateSettings() {

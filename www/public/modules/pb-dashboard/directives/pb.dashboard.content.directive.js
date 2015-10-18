@@ -53,6 +53,9 @@ function pbDashboardContentController($scope, $rootScope, $http, $location, pbDa
 
     function init() {
 
+        //createValuator();
+        //return;
+
         vm.blueprint = $rootScope.currentValuator.metadata.blueprint;
         console.log(vm.blueprint);
 

@@ -11,8 +11,8 @@ module.exports = {
                 default: 20
             },
             startyear: {
-                type: String,
-                default: '2014'
+                type: Number,
+                default: 2014
             },
             trialyear: Number,
             normalyear: Number,

@@ -71,15 +71,14 @@ module.exports = (function () {
         init();
 
         function init() {
-            //initialValuator();
-
+            initialValuator();
             getValuator();
         }
 
         function getValuator() {
             var baseUrl = '/api/valuators/';
             $http({
-                url: baseUrl + '55e395a874a7469416566da7',
+                url: baseUrl + '5623c78f9055db5421d5f5d7', 
                 method: "GET"
             }).success(function (valuator) {
                 //console.log(valuator);

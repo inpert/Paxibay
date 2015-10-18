@@ -4,47 +4,50 @@
         <br />
         <div>
             <label>
-                asdf
-                <input type="number" name="input" ng-model="qty"
-                       style="width:100px" min="1" max="9" required>
+                period
+                <input type="number" name="period" ng-model="vm.metadata.settings.duration.period"
+                       style="width:100px" min="10" max="30" required>
             </label>
         </div>
         <div>
             <label>
-                asdf
-                <input type="number" name="input" ng-model="qty"
-                       style="width:100px" min="1" max="9" required>
+                startyear
+                <input type="text" name="startyear" ng-model="vm.metadata.settings.duration.startyear"
+                       style="width:100px" required>
             </label>
         </div>
         <div>
             <label>
-                asdf
-                <input type="number" name="input" ng-model="qty"
-                       style="width:100px" min="1" max="9" required>
+                trialyear
+                <input type="number" name="trialyear" ng-model="vm.metadata.settings.duration.trialyear"
+                       style="width:100px" min="1" max="2050" required>
             </label>
         </div>
         <div>
             <label>
-                asdf
-                <input type="number" name="input" ng-model="qty"
+                normalyear
+                <input type="number" name="normalyear" ng-model="vm.metadata.settings.duration.normalyear"
                        style="width:100px" min="1" max="9" required>
             </label>
         </div>
 
         <div>
             <label>
-                asdf
-                <input type="checkbox" name="input" ng-model="qty">
+                hasleadtime
+                <input type="checkbox" name="hasleadtime" ng-model="vm.metadata.settings.duration.hasleadtime">
             </label>
         </div>
     </div>
-
+    <button class="btn btn-primary"
+            ng-click="vm.updateSettings()">
+        updateProject
+    </button>
     <hr />
 
     <div>
         <div>
             <label>
-                asdf
+                baseprice
                 <input type="checkbox" name="input" ng-model="qty">
             </label>
         </div>
