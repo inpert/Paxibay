@@ -34,7 +34,7 @@ module.exports = {
             incometax: Number,
             surplusreserve: Number,
             Statutorywelfarereserve: Number,
-            extractsurplusreserve: String,
+            extractsurplusreserve: Number,
             Profitpayable: Number,
             surplusreservescale: Number
         }
